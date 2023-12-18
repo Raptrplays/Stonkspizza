@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orderitems_tabel', function (Blueprint $table) {
+        Schema::create('bestellingen_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pizza_id')->nullable(false)->references('id')->on('pizzas')->cascadeOnDelete();
-            $table->foreignId('grootte_id')->nullable(false)->references('id')->on('sizes')->cascadeOnDelete();
-            $table->foreignId('order_id')->nullable(true)->references('id')->on('orders')->cascadeOnDelete();
+            $table->foreignId('grootte_id')->nullable(false)->references('id')->on('grootte')->cascadeOnDelete();
+            $table->foreignId('order_id')->nullable(true)->references('id')->on('bestellingen')->cascadeOnDelete();
         });
     }
 
