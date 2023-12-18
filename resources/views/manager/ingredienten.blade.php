@@ -28,8 +28,10 @@
               </tr>
             </thead>
               <tbody>
+                @foreach ($ingredients as $ingredient)
                     <tr>
                         <td class="px-4 py-3">
+                            {{ $ingredient->name}}
                         </td>
                         <td class="px-4 py-3">
                         </td>    
@@ -44,6 +46,7 @@
                             </form>
                         </td>
                     </tr> 
+                    @endforeach
             </tbody>
         </table>
         <button class="bg-green-500 text-white py-1 px-1 m-3 rounded">

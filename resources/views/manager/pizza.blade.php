@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
     <title>Pizza's beheren</title>
 </head>
 <body>
@@ -27,10 +28,13 @@
               </tr>
             </thead>
               <tbody>
+                @foreach($pizzas as $pizza)
                     <tr>
                         <td class="px-4 py-3">
+                            {{ $pizza->name }}
                         </td>
                         <td class="px-4 py-3">
+                            {{ $pizza->id}}
                         </td>    
                         <td class="px-4 py-3">
                             <a href="#" class="bg-blue-600 hover:bg-blue-300 text-white py-1 px-1 m-3 rounded">Pas pizza aan</a>
@@ -41,6 +45,7 @@
                             </form>
                         </td>
                     </tr> 
+                    @endforeach
             </tbody>
         </table>
         <button class="bg-green-500 text-white py-1 px-1 m-3 rounded">

@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
     <title>Maak nieuw ingredient aan</title>
 </head>
 <body>
-    <form action="" method="POST" class="max-w-md mx-auto bg-neutral-900 p-6 rounded-lg mt-10" method="POST">
+    <form action="/pizza" method="POST" class="max-w-md mx-auto bg-neutral-900 p-6 rounded-lg mt-10" method="POST">
         @csrf
         <label for="naam" class="block text-gray-700 font-bold mb-2">
             Naam

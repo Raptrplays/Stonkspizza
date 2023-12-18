@@ -29,12 +29,16 @@
               </tr>
             </thead>
               <tbody>
+                @foreach($medewerkers as $medewerker)
                     <tr>
                         <td class="px-4 py-3">
+                            {{ $medewerker->first_name }}
                         </td>
                         <td class="px-4 py-3">
+                            {{ $medewerker->last_name }}
                         </td>    
                         <td class="px-4 py-3">
+                            {{ $medewerker->id }}
                         </td>
                         <td class="px-4 py-3">
                             <a href="#" class="bg-blue-600 hover:bg-blue-300 text-white py-1 px-1 m-3 rounded">Pas medewerker aan</a>
@@ -45,6 +49,7 @@
                             </form>
                         </td>
                     </tr> 
+                    @endforeach
             </tbody>
         </table>
         <button class="bg-green-500 text-white py-1 px-1 m-3 rounded">
