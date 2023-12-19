@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class units extends Model
+class Status extends Model
 {
     use HasFactory;
 
+    public function orders()
+    {
+        return $this->hasMany(bestellingen::class);
+    }
 }

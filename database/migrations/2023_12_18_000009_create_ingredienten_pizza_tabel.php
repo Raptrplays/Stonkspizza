@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ingredienten_van_pizza', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pizza_id')->nullable(false)->references('id')->on('pizzas')->cascadeOnDelete();
-            $table->foreignId('eenheid_id')->nullable(false)->references('id')->on('ingredienten')->onDelete('cascade');
+            $table->foreignId('ingredient_id')->nullable(false)->references('id')->on('ingredienten')->onDelete('cascade');
             $table->bigInteger('amount')->nullable(false)->default(1);
         });
     }
