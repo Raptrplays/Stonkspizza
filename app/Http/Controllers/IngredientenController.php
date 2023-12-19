@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ingredients;
+use App\Models\ingredienten;
 use App\Models\units;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,7 @@ class IngredientenController extends Controller
      */
     public function index()
     {
-        $ingredients = ingredients::all();
+        $ingredients = ingredienten::all();
         $units = units::all();
         return view('manager/ingredienten', ['ingredients' => $ingredients, 'units' => $units]);
     }
@@ -32,7 +32,7 @@ class IngredientenController extends Controller
      */
     public function store(Request $request)
     {
-        $i = new ingredients;
+        $i = new ingredienten;
         $naam = $request->name;
         $prijs = $request->price;
 
@@ -62,7 +62,7 @@ class IngredientenController extends Controller
      */
     public function edit(string $id)
     {
-        $ingredients = ingredients::find($id);
+        $ingredients = ingredienten::find($id);
         $units = units::all();
 
         return view('ingredienten.edit', compact( 'ingredients', 'units'));

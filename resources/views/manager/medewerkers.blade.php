@@ -53,7 +53,7 @@
             </tbody>
         </table>
         <button class="bg-green-500 text-white py-1 px-1 m-3 rounded">
-            <a href="manager/create">Voeg nieuwe medewerker toe</a>
+            <a href="medewerkers/create">Voeg nieuwe medewerker toe</a>
         </button>
     </tbody>
 

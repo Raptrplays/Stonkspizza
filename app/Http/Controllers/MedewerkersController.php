@@ -12,7 +12,7 @@ class MedewerkersController extends Controller
     public function index()
     {
         $medewerkers = medewerkers::all();
-        return view('manager/medewerker', ['medewerkers' => $medewerkers]);
+        return view('manager/medewerkers', ['medewerkers' => $medewerkers]);
     }
 
     /**
