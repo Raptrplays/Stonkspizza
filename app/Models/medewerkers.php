@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class medewerkers extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function orders()
+    {
+        return $this->hasMany(bestellingen::class);
+    }
 }
