@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\ingredients;
+use App\Models\units;
 use Illuminate\Http\Request;
 
 class IngredientenController extends Controller
@@ -11,7 +12,9 @@ class IngredientenController extends Controller
      */
     public function index()
     {
-        //
+        $ingredients = ingredients::all();
+        $units = units::all();
+        return view('manager/ingredienten', ['ingredients' => $ingredients, 'units' => $units]);
     }
 
     /**
@@ -19,7 +22,9 @@ class IngredientenController extends Controller
      */
     public function create()
     {
-        //
+        $units = units::all();
+
+        return view ('ingredienten.create', ['units' => $units]);
     }
 
     /**
@@ -27,7 +32,21 @@ class IngredientenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $i = new ingredients;
+        $naam = $request->name;
+        $prijs = $request->price;
+
+        $i->name = $naam;
+        $i->price = $prijs;
+        $i->save();
+
+        $u = new units;
+        $u->unit_id = $i->id;
+        $unit_id = $request->unit;
+        $u->unit_id = $unit_id;
+        $u->save();
+
+        return redirect('index');
     }
 
     /**
@@ -43,7 +62,10 @@ class IngredientenController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ingredients = ingredients::find($id);
+        $units = units::all();
+
+        return view('ingredienten.edit', compact( 'ingredients', 'units'));
     }
 
     /**

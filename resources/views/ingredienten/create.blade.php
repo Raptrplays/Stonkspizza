@@ -22,8 +22,8 @@
 
         <label for="eenheid" class="block text-gray-700 font-bold mb-2">Eenheid</label>
         <select id="eenheid" name="eenheid" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
-            @foreach ($albums as $album)
-                <option value="{{ $album->id }}">{{ $album->name }}</option>
+            @foreach ($units as $unit)
+                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
             @endforeach
         </select>
         
