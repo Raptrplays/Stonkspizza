@@ -15,7 +15,7 @@
             </div>
             <nav class="space-x-4">
                 <a href="#" class="hover:text-gray-300">Inloggen</a>
-                <a href="#" class="hover:text-gray-300">mandje</a>
+                <a href="/mandje" class="hover:text-gray-300">mandje</a>
             </nav>
         </div>
     </header>
@@ -24,7 +24,7 @@
         @foreach($pizzas as $pizza)
         <div class="flex-1 bg-yellow-50 p-4 m-10 shadow-md shadow-black rounded-sm">
             <h1>{{ $pizza->name }}</h1>
-            <h1>{{ $pizza->id }}</h1>
+            <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-2 rounded">Voeg toe aan bestelling</button>
         </div>     
         @endforeach     
     </div>
