@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pizza_id')->nullable(false)->references('id')->on('pizzas')->cascadeOnDelete();
             $table->foreignId('ingredient_id')->nullable(false)->references('id')->on('ingredienten')->onDelete('cascade');
-            $table->bigInteger('amount')->nullable(false)->default(1);
         });
     }
 
