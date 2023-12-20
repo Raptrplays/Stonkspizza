@@ -8,7 +8,7 @@ use App\Http\Controllers\MedewerkersController;
 use App\Http\Controllers\Ingredientencontroller;
 
 Route::get('/index', function () {
-    return view('manager.pizza');
+    return view('menu');
 });
 
 Route::resource('pizza', PizzaController::class);
