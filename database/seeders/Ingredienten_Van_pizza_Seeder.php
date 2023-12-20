@@ -24,6 +24,6 @@ class Ingredienten_van_pizza_seeder extends Seeder
          pizzas::find(3)->ingredients()->attach([1, 3, 5]);
 
          // Pizza Pepperoni Ingredients
-         pizzas::find(5)->ingredients()->attach([1, 3, 4, 6]);
+         pizzas::find(4)->ingredients()->attach([1, 3, 4, 6]);
     }
 }
