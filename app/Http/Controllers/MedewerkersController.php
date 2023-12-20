@@ -42,7 +42,7 @@ class MedewerkersController extends Controller
 
         $m->first_name = $voornaam;
         $m->last_name = $achternaam;
-        $m->addres = $adres;
+        $m->address = $adres;
         $m->phone = $telefoonnummer;
         $m->city = $stad;
         $m->burger_service_nummer = $BSN;
@@ -92,7 +92,7 @@ class MedewerkersController extends Controller
 
         $m->first_name = $voornaam;
         $m->last_name = $achternaam;
-        $m->addres = $adres;
+        $m->address = $adres;
         $m->phone = $telefoonnummer;
         $m->city = $stad;
         $m->burger_service_nummer = $BSN;
