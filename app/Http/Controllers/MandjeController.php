@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\pizzas;
+use App\Models\ingredienten;
+use App\Models\grootte;
 use Illuminate\Http\Request;
 
 class MandjeController extends Controller
@@ -11,7 +13,10 @@ class MandjeController extends Controller
      */
     public function index()
     {
-        //
+        $pizzas = pizzas::all();
+        $ingredienten = ingredienten::all();
+        $groottes = grootte::all();
+        return view('mandje', ['pizzas' => $pizzas, 'ingredienten' => $ingredienten, 'groottes' => $groottes]);
     }
 
     /**
