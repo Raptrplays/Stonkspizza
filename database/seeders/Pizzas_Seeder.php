@@ -34,12 +34,6 @@ class Pizzas_Seeder extends Seeder
         ]);
         pizzas::insert([
             'id' => 4,
-            'name' => 'Pizza Margherita',
-            'beschrijving' => 'Margarita: Tomatensaus, Mozzarella, Olijfolie, Basilicumblaadjes.
-            Een klassieke combinatie van smaken, perfect gebakken voor de liefhebbers van eenvoud en authenticiteit.',
-        ]);
-        pizzas::insert([
-            'id' => 5,
             'name' => 'Pizza Pepperoni',
             'beschrijving' => 'Pizza Pepperoni: Tomatensaus, Mozzarella, Olijfolie, Basilicumblaadjes, Pepperoni.
             Ontdek onze Pepperoni Pizza met pittige pepperoni, smeuïge mozzarella, en verse basilicum op een heerlijke tomatensaus.

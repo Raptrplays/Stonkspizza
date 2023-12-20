@@ -14,35 +14,16 @@ class Ingredienten_van_pizza_seeder extends Seeder
      */
     public function run(): void
     {
-        //
-        {
-            // Pizza Margherita Ingredients
-            ingredientenpizza::find(1)->ingredienten()->attach([
-                1 => ['amount' => 1], // Tomaten Saus
-                3 => ['amount' => 1], // Mozzarella
-                4 => ['amount' => 1], // Basilicum Blaadjes
-            ]);
+         // Pizza Margherita Ingredients
+         pizzas::find(1)->ingredients()->attach([1, 3, 4]);
 
-            // Pizza Bolognese Ingredients
-            ingredientenpizza::find(2)->ingredienten()->attach([
-                2 => ['amount' => 1], // Bolognese Saus
-                3 => ['amount' => 1], // Mozzarella
-            ]);
+         // Pizza Bolognese Ingredients
+         pizzas::find(2)->ingredients()->attach([2, 3]);
 
-            // Pizza Funghi Ingredients
-            ingredientenpizza::find(3)->ingredienten()->attach([
-                1 => ['amount' => 1], // Tomaten Saus
-                3 => ['amount' => 1], // Mozzarella
-                5 => ['amount' => 1], // Verse Champignons
-            ]);
+         // Pizza Funghi Ingredients
+         pizzas::find(3)->ingredients()->attach([1, 3, 5]);
 
-            // Pizza Pepperoni Ingredients
-            ingredientenpizza::find(5)->ingredienten()->attach([
-                1 => ['amount' => 1], // Tomaten Saus
-                3 => ['amount' => 1], // Mozzarella
-                4 => ['amount' => 1], // Basilicum Blaadjes
-                6 => ['amount' => 1], // Pepperoni
-            ]);
-        }
+         // Pizza Pepperoni Ingredients
+         pizzas::find(5)->ingredients()->attach([1, 3, 4, 6]);
     }
 }
