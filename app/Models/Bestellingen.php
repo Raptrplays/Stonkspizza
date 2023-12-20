@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class bestellingen extends Model
 {
     use HasFactory;
-
+    protected $table = 'bestellingen';
     public $timestamps = true;
     protected $guarded = ['id'];
 

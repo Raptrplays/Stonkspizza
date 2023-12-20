@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class bestellingenitems extends Model
 {
     use HasFactory;
+    protected $table = 'bestellingen_items';
     public $timestamps = false;
 
     public function size()

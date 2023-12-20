@@ -13,16 +13,11 @@ return new class extends Migration
     {
         Schema::create('medewerkers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('last_name');
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('zipcode')->nullable();
-            $table->string('city')->nullable();
-            $table->string('country')->nullable();
-            // employee email is created in the user table
-            $table->string('personal_email')->nullable();
-            $table->date('birth_date')->nullable();
+            $table->string('voornaam')->nullable();
+            $table->string('achternaam');
+            $table->string('adres')->nullable();
+            $table->string('telefoonnummer')->nullable();
+            $table->string('stad')->nullable();
             $table->string('burger_service_nummer')->nullable();
             $table->timestamps();
         });
