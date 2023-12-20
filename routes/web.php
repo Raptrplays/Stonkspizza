@@ -5,18 +5,15 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\MedewerkersController;
-use App\Http\Controllers\Ingredientencontroller;
+use App\Http\Controllers\IngredientenController;
+use App\Http\Controllers\MenuController;
 
-Route::get('/index', function () {
-    return view('menu');
-});
+
 
 Route::resource('pizza', PizzaController::class);
 Route::resource('medewerkers', MedewerkersController::class);
 Route::resource('ingredienten', IngredientenController::class);
-
-
-
+Route::resource('menu', MenuController::class);
 
 
 Route::get('/dashboard', function () {
