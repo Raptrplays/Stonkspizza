@@ -28,24 +28,8 @@
             <input type="number" id="phone" name="phone" value=" {{ $medewerker->phone }} " placeholder="telefoonnummer" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2" for="zipcode">Postcode</label>
-            <input type="text" id="zipcode" name="zipcode" value=" {{ $medewerker->zipcode }} " placeholder="postcode" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
-        </div>
-        <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2" for="city">Stad</label>
             <input type="text" id="city" name="city" value=" {{ $medewerker->city }} " placeholder="stad" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2" for="country">Land</label>
-            <input type="text" id="country" name="country" value=" {{ $medewerker->country }} " placeholder="land" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2" for="personal_email">Persoonlijke email</label>
-            <input type="email" id="personal_email" name="personal_email" value=" {{ $medewerker->personal_email }} " placeholder="persoonlijke email" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2" for="birth_date">Geboortedatum</label>
-            <input type="date" id="birth_date" name="birth_date" value=" {{ $medewerker->birth_date }} " placeholder="geboortedatum" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2" for="burger_service_nummer">BSN</label>

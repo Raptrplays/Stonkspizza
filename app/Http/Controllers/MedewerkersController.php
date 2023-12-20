@@ -35,10 +35,6 @@ class MedewerkersController extends Controller
         $telefoonnummer = $request->telefoonnummer;
         $stad = $request->stad;
         $BSN = $request->BSN;
-        $postcode = $request->postcode;
-        $land = $request->land;
-        $persoonlijke_email = $request->persoonlijke_email;
-        $geboortedatum = $request->geboortedatum;
 
         $m->first_name = $voornaam;
         $m->last_name = $achternaam;
@@ -46,11 +42,6 @@ class MedewerkersController extends Controller
         $m->phone = $telefoonnummer;
         $m->city = $stad;
         $m->burger_service_nummer = $BSN;
-        $m->zipcode = $postcode;
-        $m->country = $land;
-        $m->personal_email = $persoonlijke_email;
-        $m->birth_date = $geboortedatum;
-
         $m->save();
         
         return redirect('index');
@@ -85,10 +76,6 @@ class MedewerkersController extends Controller
         $telefoonnummer = $request->phone;
         $stad = $request->city;
         $BSN = $request->burger_service_nummer;
-        $postcode = $request->zipcode;
-        $land = $request->country;
-        $persoonlijke_email = $request->personal_email;
-        $geboortedatum = $request->birth_date;
 
         $m->first_name = $voornaam;
         $m->last_name = $achternaam;
@@ -96,10 +83,6 @@ class MedewerkersController extends Controller
         $m->phone = $telefoonnummer;
         $m->city = $stad;
         $m->burger_service_nummer = $BSN;
-        $m->zipcode = $postcode;
-        $m->country = $land;
-        $m->personal_email = $persoonlijke_email;
-        $m->birth_date = $geboortedatum;
         $m->save();
 
         return redirect('index');

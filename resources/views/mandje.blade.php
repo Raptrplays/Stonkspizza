@@ -24,7 +24,7 @@
         @foreach($pizzas as $pizza)
         <div class="flex-1 bg-yellow-50 p-4 m-10 shadow-md shadow-black rounded-sm">
             <h1 class="font-bold">{{ $pizza->name }}</h1>
-            <p>{{ $pizza->beschrijving }}</p><h1></h1><h1></h1><h1></h1>
+            <p>{{ $pizza->beschrijving }}</p>
             <div class="mt-4">
                 <label class="block text-black mb-2" for="grootte">Kies grootte van de pizza</label>
             <select id="grootte" name="grootte">
