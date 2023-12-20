@@ -9,6 +9,7 @@ class medewerkers extends Model
 {
     use HasFactory;
 
+    protected $table = 'medewerkers';
     protected $guarded = [];
 
     public function orders()

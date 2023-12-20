@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ingredienten extends Model
 {
     use HasFactory;
+    protected $table = 'ingredienten';
     public $timestamps = false;
 
 
@@ -18,7 +19,7 @@ class ingredienten extends Model
 
     public function orderitems()
     {
-        return $this->belongsToMany(Orderitem::class)->withPivot('quantity');
+        return $this->belongsToMany(bestellingenitems::class)->withPivot('quantity');
     }
 
     public function unit()

@@ -9,6 +9,7 @@ class pizzas extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = 'pizzas';
     protected $guarded = ['id'];
 
     public function ingredients()

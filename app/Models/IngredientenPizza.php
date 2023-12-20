@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ingredientenpizza extends Model
 {
     use HasFactory;
+    protected $table = 'ingredienten_van_pizza';
     protected $fillable = [
         'pizza_id',
         'ingredient_id',
         'amount'
     ];
-    protected $table = "ingredient_pizza";
 }
