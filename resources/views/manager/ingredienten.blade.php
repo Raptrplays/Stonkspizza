@@ -35,7 +35,7 @@
                             {{ $ingredient->name}}
                         </td>
                         <td class="px-4 py-3">
-                        </td>    
+                        </td>
                         <td class="px-4 py-3">
                         </td>
                         <td class="px-4 py-3">
@@ -46,12 +46,12 @@
                                 <button type="submit" class="bg-red-600 hover:bg-red-500 text-white py-1 px-1 m-3 rounded">Verwijder ingredient</button>
                             </form>
                         </td>
-                    </tr> 
+                    </tr>
                     @endforeach
             </tbody>
         </table>
         <button class="bg-green-500 text-white py-1 px-1 m-3 rounded">
-            <a href="create">Voeg nieuw ingredient toe</a>
+            <a href="ingredienten/create">Voeg nieuw ingredient toe</a>
         </button>
     </tbody>
 </body>
