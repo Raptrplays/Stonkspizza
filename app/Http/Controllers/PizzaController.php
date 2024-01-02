@@ -30,11 +30,14 @@ class PizzaController extends Controller
     {
         $p = new pizzas;
         $name = $request->name;
+        $beschrijving = $request->beschrijving;
 
         $p->name = $name;
+        $p->beschrijving = $beschrijving;
+
         $p->save();
         
-        return redirect('index');
+        return redirect('pizza');
     }
 
     /**
@@ -61,11 +64,13 @@ class PizzaController extends Controller
     {
         $p = pizzas::find($id);
         $name = $request->name;
+        $beschrijving = $request->beschrijving;
 
+        $p->beschrijving = $beschrijving;
         $p->name = $name;
         $p->save();
 
-        return redirect('index');
+        return redirect('pizza');
     }
 
     /**
@@ -76,6 +81,6 @@ class PizzaController extends Controller
         $pizza = pizzas::find($id);
         $pizza->delete();
 
-        return redirect('index');
+        return redirect('pizza');
     }
 }
