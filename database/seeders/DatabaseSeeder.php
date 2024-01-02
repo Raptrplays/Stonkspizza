@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call([Rechten_Seeder::class]);
         $this->call([Status_Seeder::class]);
         $this->call([Ingredienten_van_pizza_seeder::class]);
-
-
+        $this->call([Grootte_Seeder::class]);
+        $this->call([UsersRechten_Seeder::class]);
+        $this->call([Gebruikers_Rechten_Seeder::class]);
     }
 }
