@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 use App\Models\pizzas;
-use App\Models\ingredienten;
-use App\Models\grootte;
 use Illuminate\Http\Request;
 
-class MandjeController extends Controller
+class BestelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ingredienten = ingredienten::all();
-        $groottes = grootte::all();
-        $order = session('order', []);
+        $pizza_id = $request->input('pizza_id');
+        $pizza = pizzas::find($pizza_id);
 
-        return view('mandje', [ 'ingredienten' => $ingredienten, 'groottes' => $groottes, 'order' => $order]);
+        $order = session('order', []);
+        $order[] = $pizza;
+        session(['order' => $order]);
+
+        return back();
     }
 
     /**
