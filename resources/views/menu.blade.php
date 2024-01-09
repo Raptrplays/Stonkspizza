@@ -17,7 +17,7 @@
             <nav class="space-x-4">
                 <div>
                     <a href="/mandje" class="font-semibold hover:text-orange-300">Mandje</a>
-                    
+
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-orange-400 hover:text-orange-300 ml-1">Account</a>
@@ -43,7 +43,6 @@
             @guest
             <button type="button" disabled class="bg-orange-400 text-white py-1 px-2 mt-2 rounded">Log in om toe te voegen aan je bestelling</button>
             @endguest
-
             @auth
             <form id="orderForm" action="/bestel" method="get">
                 @csrf
@@ -51,8 +50,8 @@
                 <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-2 rounded">Voeg toe aan bestelling</button>
             </form>
             @endauth
-        </div>     
-        @endforeach     
+        </div>
+        @endforeach
     </div>
 
 </body>

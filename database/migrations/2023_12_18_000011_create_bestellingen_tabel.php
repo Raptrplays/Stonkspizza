@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('bestellingen', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('bestellingtijd')->nullable(false);
             $table->foreignId('customer_id')->nullable(false)->references('id')->on('klant')->cascadeOnDelete();
             $table->foreignId('status_id')->default(1)->nullable(false)->references('id')->on('status')->cascadeOnDelete();
             $table->timestamps();
