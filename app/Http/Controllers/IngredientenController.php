@@ -38,15 +38,12 @@ class IngredientenController extends Controller
 
         $i->name = $naam;
         $i->price = $prijs;
-
+        $i->save();
 
         $u = new units;
         $u->unit_id = $i->id;
         $unit_id = $request->unit;
         $u->unit_id = $unit_id;
-
-        dd($i,$u);
-        $i->save();
         $u->save();
 
         return redirect('index');
