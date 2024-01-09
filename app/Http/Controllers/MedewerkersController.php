@@ -44,7 +44,7 @@ class MedewerkersController extends Controller
         $m->burger_service_nummer = $BSN;
         $m->save();
         
-        return redirect('index');
+        return redirect('medewerkers');
     }
 
     /**
@@ -85,7 +85,7 @@ class MedewerkersController extends Controller
         $m->burger_service_nummer = $BSN;
         $m->save();
 
-        return redirect('index');
+        return redirect('medewerkers');
     }
 
     /**
@@ -96,6 +96,6 @@ class MedewerkersController extends Controller
         $medewerker = medewerkers::find($id);
         $medewerker->delete();
 
-        return redirect('index');
+        return redirect('medewerkers');
     }
 }

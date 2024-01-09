@@ -44,9 +44,14 @@ class IngredientenController extends Controller
         $u->unit_id = $i->id;
         $unit_id = $request->unit;
         $u->unit_id = $unit_id;
+<<<<<<< HEAD
+=======
+
+        $i->save();
+>>>>>>> a985717937c00f3c7ffb662a5cdf8a2d5c9e8702
         $u->save();
 
-        return redirect('index');
+        return redirect('ingredienten');
     }
 
     /**

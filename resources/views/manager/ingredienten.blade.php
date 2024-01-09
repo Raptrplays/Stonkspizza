@@ -7,50 +7,55 @@
     @vite('resources/css/app.css')
     <title>Ingredienten beheren</title>
 </head>
-<body>
-    <header class="bg-black text-white p-4">
+<body class="bg-yellow-50">
+    <header class="bg-green-800 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold">
                 StonksPizza
             </div>
-            <nav class="space-x-4">
-                <a href="#" class="hover:text-gray-300">Uitloggen</a>
-            </nav>
         </div>
     </header>
 
     <tbody>
-        <table class="table text-white">
+        <table class="table text-black">
             <thead>
               <tr>
                 <th>Ingredient</th>
                 <th>Eenheid</th>
+                <th>Prijs</th>
                 <th>Id</th>
               </tr>
             </thead>
               <tbody>
                 @foreach ($ingredients as $ingredient)
+                    @foreach ($ingredient->units as $unit)
                     <tr>
                         <td class="px-4 py-3">
                             {{ $ingredient->name}}
                         </td>
                         <td class="px-4 py-3">
+                            {{ $unit->name }}
                         </td>
                         <td class="px-4 py-3">
+                            {{ $ingredient->price }}
                         </td>
                         <td class="px-4 py-3">
-                            <a href="#" class="bg-blue-600 hover:bg-blue-300 text-white py-1 px-1 m-3 rounded">Pas ingredient aan</a>
-                            <form action="#" method="post">
+                            {{ $ingredient->id }}
+                        </td>
+                        <td class="px-4 py-3">
+                            <a href="{{ url('ingredienten/' . $ingredient->id . '/edit') }}" class="bg-blue-600 hover:bg-blue-300 text-yellow-50 py-1 px-1 m-3 rounded">Pas ingredient aan</a>
+                            <form action="{{ url('ingredienten/' . $ingredienten->id) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-white py-1 px-1 m-3 rounded">Verwijder ingredient</button>
+                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 m-3 rounded">Verwijder ingredient</button>
                             </form>
                         </td>
                     </tr>
                     @endforeach
+                @endforeach
             </tbody>
         </table>
-        <button class="bg-green-500 text-white py-1 px-1 m-3 rounded">
+        <button class="bg-green-800 text-yellow-50 py-1 px-1 m-3 rounded">
             <a href="ingredienten/create">Voeg nieuw ingredient toe</a>
         </button>
     </tbody>

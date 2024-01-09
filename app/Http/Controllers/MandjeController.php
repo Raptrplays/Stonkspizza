@@ -13,10 +13,11 @@ class MandjeController extends Controller
      */
     public function index()
     {
-        $pizzas = pizzas::all();
         $ingredienten = ingredienten::all();
         $groottes = grootte::all();
-        return view('mandje', ['pizzas' => $pizzas, 'ingredienten' => $ingredienten, 'groottes' => $groottes]);
+        $order = session('order', []);
+
+        return view('mandje', [ 'ingredienten' => $ingredienten, 'groottes' => $groottes, 'order' => $order]);
     }
 
     /**

@@ -8,23 +8,22 @@
     <title>Medewerkers beheren</title>
 </head>
 <body>
-    <header class="bg-black text-white p-4">
+    <header class="bg-green-800 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold">
                 StonksPizza
             </div>
-            <nav class="space-x-4">
-                <a href="#" class="hover:text-gray-300">Uitloggen</a>
-            </nav>
         </div>
     </header>
 
     <tbody>
-        <table class="table text-white">
+        <table class="table text-black">
             <thead>
               <tr>
                 <th>Naam</th>
                 <th>Achternaam</th>
+                <th>Telefoonnummer</th>
+                <th>Stad</th>
                 <th>Id</th>
               </tr>
             </thead>
@@ -32,27 +31,33 @@
                 @foreach($medewerkers as $medewerker)
                     <tr>
                         <td class="px-4 py-3">
-                            {{ $medewerker->first_name }}
+                            {{ $medewerker->voornaam }}
                         </td>
                         <td class="px-4 py-3">
-                            {{ $medewerker->last_name }}
-                        </td>    
+                            {{ $medewerker->achternaam }}
+                        </td> 
+                        <td class="px-4 py-3">
+                            {{ $medewerker->telefoonnummer }}
+                        </td>
+                        <td class="px-4 py-3">
+                            {{ $medewerker->stad }}
+                        </td>     
                         <td class="px-4 py-3">
                             {{ $medewerker->id }}
                         </td>
                         <td class="px-4 py-3">
-                            <a href="#" class="bg-blue-600 hover:bg-blue-300 text-white py-1 px-1 m-3 rounded">Pas medewerker aan</a>
+                            <a href="#" class="bg-blue-600 hover:bg-blue-300 text-yellow-50 py-1 px-1 m-3 rounded">Pas medewerker aan</a>
                             <form action="#" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-white py-1 px-1 m-3 rounded">Verwijder medewerker</button>
+                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 m-3 rounded">Verwijder medewerker</button>
                             </form>
                         </td>
                     </tr> 
                     @endforeach
             </tbody>
         </table>
-        <button class="bg-green-500 text-white py-1 px-1 m-3 rounded">
+        <button class="bg-green-800 text-yellow-50 py-1 px-1 m-3 rounded">
             <a href="medewerkers/create">Voeg nieuwe medewerker toe</a>
         </button>
     </tbody>

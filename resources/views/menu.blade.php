@@ -13,9 +13,23 @@
             <div class="text-2xl font-bold">
                 StonksPizza
             </div>
+
             <nav class="space-x-4">
-                <a href="/mandje" class="hover:text-orange-300">mandje</a>
-                <a href="#" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 m-10 rounded">Inloggen</a>
+                <div>
+                    <a href="/mandje" class="font-semibold hover:text-orange-300">Mandje</a>
+                    
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="font-semibold text-orange-400 hover:text-orange-300 ml-1">Account</a>
+                    @else
+                        <a href="{{ route('login') }}" class="font-semibold text-orange-400 hover:text-orange-300 ml-1">Inloggen</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="font-semibold text-orange-400 hover:text-orange-300 ml-1">Registreren</a>
+                        @endif
+                    @endauth
+                </div>
+                @endif
             </nav>
         </div>
     </header>
@@ -26,7 +40,17 @@
             <h1>{{ $pizza->name }}</h1>
             <br>
             <p>{{ $pizza->beschrijving}}</p>
-            <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-2 rounded">Voeg toe aan bestelling</button>
+            @guest
+            <button type="button" disabled class="bg-orange-400 text-white py-1 px-2 mt-2 rounded">Log in om toe te voegen aan je bestelling</button>
+            @endguest
+
+            @auth
+            <form id="orderForm" action="/bestel" method="get">
+                @csrf
+                <input type="hidden" name="pizza_id" value="{{ $pizza->id }}">
+                <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-2 rounded">Voeg toe aan bestelling</button>
+            </form>
+            @endauth
         </div>     
         @endforeach     
     </div>

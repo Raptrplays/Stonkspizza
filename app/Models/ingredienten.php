@@ -19,6 +19,6 @@ class ingredienten extends Model
 
     public function unit()
     {
-        return $this->belongsTo(Units::class);
+        return $this->belongsTo(units::class);
     }
 }

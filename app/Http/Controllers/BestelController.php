@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 use App\Models\pizzas;
 use Illuminate\Http\Request;
 
-class PizzaController extends Controller
+class BestelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pizzas = pizzas::all();
-        return view('manager/pizza', ['pizzas' => $pizzas]);
+        $pizza_id = $request->input('pizza_id');
+        $pizza = pizzas::find($pizza_id);
+
+        $order = session('order', []);
+        $order[] = $pizza;
+        session(['order' => $order]);
+
+        return back();
     }
 
     /**
@@ -20,7 +26,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view ('pizza.create');
+        //
     }
 
     /**
@@ -28,16 +34,7 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        $p = new pizzas;
-        $name = $request->name;
-        $beschrijving = $request->beschrijving;
-
-        $p->name = $name;
-        $p->beschrijving = $beschrijving;
-
-        $p->save();
-        
-        return redirect('pizza');
+        //
     }
 
     /**
@@ -53,8 +50,7 @@ class PizzaController extends Controller
      */
     public function edit(string $id)
     {
-        $pizza = pizzas::find($id);
-        return view('pizza.edit', compact( 'pizza' ));
+        //
     }
 
     /**
@@ -62,15 +58,7 @@ class PizzaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $p = pizzas::find($id);
-        $name = $request->name;
-        $beschrijving = $request->beschrijving;
-
-        $p->beschrijving = $beschrijving;
-        $p->name = $name;
-        $p->save();
-
-        return redirect('pizza');
+        //
     }
 
     /**
@@ -78,9 +66,6 @@ class PizzaController extends Controller
      */
     public function destroy(string $id)
     {
-        $pizza = pizzas::find($id);
-        $pizza->delete();
-
-        return redirect('pizza');
+        //
     }
 }

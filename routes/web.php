@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BestelController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,11 +13,13 @@ use App\Http\Controllers\MandjeController;
 
 
 
+Route::resource('bestel', BestelController::class);
 Route::resource('pizza', PizzaController::class);
 Route::resource('medewerkers', MedewerkersController::class);
 Route::resource('ingredienten', IngredientenController::class);
 Route::resource('menu', MenuController::class);
 Route::resource('mandje', MandjeController::class);
+
 
 
 
