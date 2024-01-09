@@ -16,7 +16,9 @@
 
             <nav class="space-x-4">
                 <div>
+                    @auth
                     <a href="/mandje" class="font-semibold hover:text-orange-300">Mandje</a>
+                    @endauth
 
                 @if (Route::has('login'))
                     @auth
