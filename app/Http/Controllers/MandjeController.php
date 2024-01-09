@@ -5,6 +5,7 @@ use App\Models\pizzas;
 use App\Models\ingredienten;
 use App\Models\grootte;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MandjeController extends Controller
 {
@@ -16,7 +17,6 @@ class MandjeController extends Controller
         $ingredienten = ingredienten::all();
         $groottes = grootte::all();
         $order = session('order', []);
-
         return view('mandje', [ 'ingredienten' => $ingredienten, 'groottes' => $groottes, 'order' => $order]);
     }
 
@@ -63,8 +63,19 @@ class MandjeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $pizza_id)
     {
-        //
+        $order = session('order', []);
+
+        // Find the index of the pizza in the order array
+        $index = array_search($pizza_id, array_column($order, 'id'));
+
+        // If the pizza is found, remove it from the order
+        if ($index !== false) {
+            unset($order[$index]);
+            session(['order' => array_values($order)]);
+        }
+
+        return back();
     }
 }

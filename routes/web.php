@@ -11,8 +11,6 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MandjeController;
 
 
-
-
 Route::resource('bestel', BestelController::class);
 Route::resource('pizza', PizzaController::class);
 Route::resource('medewerkers', MedewerkersController::class);

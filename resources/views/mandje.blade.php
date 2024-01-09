@@ -16,7 +16,7 @@
             <nav class="space-x-4">
                 <div>
                     <a href="/menu" class="font-semibold hover:text-orange-300">Menu</a>
-                    
+
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-orange-400 hover:text-orange-300 ml-1">Account</a>
@@ -59,13 +59,13 @@
                 @endforeach
             </select>
             </div>
-            <form action="{{ url('mandje/' . $item->pizza_id) }}" method="post">
+            <form action="{{ url('mandje/' . $item->id) }}" method="post">
                 @csrf
                 @method('delete')
                 <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 mt-5 rounded">Verwijder van bestelling</button>
             </form>
-        </div>     
-        @endforeach     
+        </div>
+        @endforeach
     </div>
 
     <div class="flex-1 bg-yellow-50 p-4 m-10 shadow-md shadow-black rounded-sm">
@@ -73,7 +73,7 @@
         <p></p>
 
         <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-5 rounded">Bestellen</button>
-    </div>  
+    </div>
 
 </body>
 </html>
