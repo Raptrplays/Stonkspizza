@@ -14,14 +14,8 @@ use App\Http\Controllers\StatusController;
 
 
 
-Route::resource('bestel', BestelController::class);
-Route::resource('pizza', PizzaController::class);
-Route::resource('medewerkers', MedewerkersController::class);
-Route::resource('ingredienten', IngredientenController::class);
+
 Route::resource('menu', MenuController::class);
-Route::resource('mandje', MandjeController::class);
-Route::resource('bereken', BerekenController::class);
-Route::resource('status', StatusController::class);
 
 
 
@@ -34,6 +28,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('mandje', MandjeController::class);
+    Route::resource('bereken', BerekenController::class);
+    Route::resource('status', StatusController::class);
+    Route::resource('bestel', BestelController::class);
+    Route::resource('pizza', PizzaController::class);
+    Route::resource('medewerkers', MedewerkersController::class);
+    Route::resource('ingredienten', IngredientenController::class);
 });
 
 require __DIR__.'/auth.php';
