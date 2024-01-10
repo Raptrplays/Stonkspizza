@@ -10,6 +10,7 @@ use App\Http\Controllers\IngredientenController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MandjeController;
 use App\Http\Controllers\BerekenController;
+use App\Http\Controllers\StatusController;
 
 
 
@@ -20,6 +21,7 @@ Route::resource('ingredienten', IngredientenController::class);
 Route::resource('menu', MenuController::class);
 Route::resource('mandje', MandjeController::class);
 Route::resource('bereken', BerekenController::class);
+Route::resource('status', StatusController::class);
 
 
 

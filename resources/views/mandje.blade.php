@@ -49,14 +49,14 @@
             <label class="block text-black mb-2 mt-4" for="ingredient">Extra ingredient</label>
             <select id="ingredient" name="ingredient">
                 @foreach ($ingredienten as $ingredient)
-                  <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                  <option id="ingredient" value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
                 @endforeach
             </select>
 
             <label class="block text-black mb-2 mt-4" for="ingredient2">Verwijder ingredient</label>
             <select id="ingredient2" name="ingredient2">
                 @foreach ($ingredienten as $ingredient)
-                  <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                  <option id="ingredient2" value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
                 @endforeach
             </select>
             </div>
@@ -70,6 +70,11 @@
     </div>
 
     <div class="w-1/3 bg-slate-100 m-10 p-10 rounded-md shadow-md">
+        <h1 class="text-2xl font-bold mb-6">Totaal</h1>
+        {{--  @if (isset($totaalprijs))
+        <h1>Totaalprijs: {{ $Totaalprijs }}</h1>
+        @endif  --}}
+
         <form action="/bereken" method="get">
             @csrf
             <input type="hidden" name="ingredient" id="ingredient1" value="{{ $ingredient->id }}">
@@ -77,68 +82,10 @@
             <input type="hidden" name="grootte" id="grootte" value="{{ $grootte->id }}">
             <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-5 rounded">Bereken prijs</button>
         </form>
-
-        {{--  @if (isset($totaalprijs))
-        <h1>Totaalprijs: {{ $Totaalprijs }}</h1>
-        @endif  --}}
-        <h1>Totaalprijs</h1>
 
         <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-5 rounded">Bestellen</button>
     </div>
 </section>
 
-    <div class="flex">
-        @foreach($order as $item)
-        <div class="flex-1 bg-yellow-50 p-4 m-10 shadow-md shadow-black rounded-sm">
-            <h1 class="font-bold">{{ $item->name }}</h1>
-            <div class="mt-4">
-                <label class="block text-black mb-2" for="grootte">Kies grootte van de pizza</label>
-            <select id="grootte" name="grootte">
-                @foreach ($groottes as $grootte)
-                  <option value="{{ $grootte->id }}">{{ $grootte->name }}</option>
-                @endforeach
-            </select>
-
-            <label class="block text-black mb-2 mt-4" for="ingredient">Extra ingredient</label>
-            <select id="ingredient" name="ingredient">
-                @foreach ($ingredienten as $ingredient)
-                  <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
-                @endforeach
-            </select>
-
-            <label class="block text-black mb-2 mt-4" for="ingredient2">Verwijder ingredient</label>
-            <select id="ingredient2" name="ingredient2">
-                @foreach ($ingredienten as $ingredient)
-                  <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
-                @endforeach
-            </select>
-            </div>
-            <form action="{{ url('mandje/' . $item->id) }}" method="post">
-                @csrf
-                @method('delete')
-                <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 mt-5 rounded">Verwijder van bestelling</button>
-            </form>
-        </div>
-        @endforeach
-    </div>
-
-    <div class="flex-1 bg-yellow-50 p-4 m-10 shadow-md shadow-black rounded-sm">
-        
-
-        <form action="/bereken" method="get">
-            @csrf
-            <input type="hidden" name="ingredient" id="ingredient1" value="{{ $ingredient->id }}">
-            <input type="hidden" name="ingredient2" id="ingredient2" value="{{ $ingredient->id }}">
-            <input type="hidden" name="grootte" id="grootte" value="{{ $grootte->id }}">
-            <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-5 rounded">Bereken prijs</button>
-        </form>
-
-        {{--  @if (isset($totaalprijs))
-        <h1>Totaalprijs: {{ $Totaalprijs }}</h1>
-        @endif  --}}
-        <h1>Totaalprijs</h1>
-
-        <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-5 rounded">Bestellen</button>
-    </div>
 </body>
 </html>
