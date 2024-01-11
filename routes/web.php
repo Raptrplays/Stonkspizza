@@ -13,12 +13,11 @@ use App\Http\Controllers\BerekenController;
 use App\Http\Controllers\StatusController;
 
 
-
+Route::get('/', function () {
+    return redirect('/menu');
+});
 
 Route::resource('menu', MenuController::class);
-
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
