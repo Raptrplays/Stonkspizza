@@ -39,12 +39,12 @@
     <section class="relative">
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Delicious Pizza" class="w-full h-64 object-cover">
         <div class="absolute inset-0 bg-black opacity-30"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-            <h2 class="text-4xl font-bold text-white">Ontdek de smaak van perfectie</h2>
+        <div class="absolute inset-0 flex items-center justify-center ">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white">Ontdek de smaak van perfectie</h2>
         </div>
     </section>
 
-    <section class="grid grid-cols-2 gap-8 m-10">
+    <section class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 m-10">
         @foreach($pizzas as $pizza)
         <div class="bg-white p-6 rounded-lg shadow-md">
                 <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emElMjB0b3AlMjBwb3Z8ZW58MHwwfDB8fHwy" alt="foto" class="w-full h-48 object-cover mb-4 rounded-md">

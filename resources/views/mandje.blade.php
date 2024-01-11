@@ -33,8 +33,8 @@
         </div>
     </header>
 
-<section class="flex">
-    <div class="w-2/3 bg-white m-10 p-10 rounded-md shadow-md">
+<section class="flex flex-wrap lg:flex-nowrap">
+    <div class="lg:w-2/3 md:w-full w-full bg-white m-10 p-10 rounded-md shadow-md">
         <h1 class="text-2xl font-bold mb-6">Jou Bestelling</h1>
         @foreach($order as $item)
         <div>
@@ -69,7 +69,7 @@
         @endforeach
     </div>
 
-    <div class="w-1/3 bg-slate-100 m-10 p-10 rounded-md shadow-md">
+    <div class="w-full lg:w-1/3 md:w-full bg-slate-100 m-10 p-10 rounded-md shadow-md">
         <h1 class="text-2xl font-bold mb-6">Totaal</h1>
         {{--  @if (isset($totaalprijs))
         <h1>Totaalprijs: {{ $Totaalprijs }}</h1>

@@ -34,7 +34,7 @@
     </header>
 
     <div class="flex items-center justify-center mt-10">
-            <h2 class="text-4xl font-bold">Status van je bestelling</h2>
+            <h2 class="text-4xl font-bold ">Status van je bestelling</h2>
     </div>
     @if ($statusid > 5)
 
@@ -45,39 +45,40 @@
     </div>
 
     @else
-    <section class="flex mt-10">
-        <div class="w-1/5 m-8 p-10 rounded-md shadow-md
+    <section class="flex flex-wrap lg:flex-nowrap mt-10">
+        <div class="w-full sm:w-1/2 md:w-1/4 lg:w-1/5 m-8 p-10 rounded-md shadow-md
         @if($statusid == 1) bg-orange-400 text-white @endif
         ">
             <h1 class="text-2xl font-bold text-center">Besteld</h1>
         </div>
 
-        <div class="w-1/5 m-8 p-10 rounded-md shadow-md
+        <div class="w-full sm:w-1/2 md:w-1/4 lg:w-1/5 m-8 p-10 rounded-md shadow-md
         @if($statusid == 2) bg-orange-400 text-white @endif
         ">
             <h1 class="text-2xl font-bold text-center">Wordt bereid</h1>
         </div>
 
-        <div class="w-1/5 m-8 p-10 rounded-md shadow-md
+        <div class="w-full sm:w-1/2 md:w-1/4 lg:w-1/5 m-8 p-10 rounded-md shadow-md
         @if($statusid == 3) bg-orange-400 text-white @endif
         ">
             <h1 class="text-2xl font-bold text-center">In de oven</h1>
         </div>
 
-        <div class="w-1/5 m-8 p-10 rounded-md shadow-md
+        <div class="w-full sm:w-1/2 md:w-1/4 lg:w-1/5 m-8 p-10 rounded-md shadow-md
         @if($statusid == 4) bg-orange-400 text-white @endif
         ">
             <h1 class="text-2xl font-bold text-center">Is onderweg</h1>
         </div>
         
-        <div class="w-1/5 m-8 p-10 rounded-md shadow-md
+        <div class="w-full sm:w-1/2 md:w-1/4 lg:w-1/5 m-8 p-10 rounded-md shadow-md
         @if($statusid == 5) bg-orange-400 text-white @endif
         ">
             <h1 class="text-2xl font-bold text-center">Bezorgd</h1>
         </div>
     </section>
 
-    <div class="m-8">
+
+    <div class="flex items-center justify-center m-8">
         <a href="{{ url('/status') }}" class="font-semibold bg-orange-400 text-white rounded-full px-4 py-2 hover:text-orange-300">Refresh</a>
     </div>
     @endif
