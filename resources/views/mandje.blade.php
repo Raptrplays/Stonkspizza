@@ -33,6 +33,16 @@
         </div>
     </header>
 
+    {{--
+    <div class="flex items-center justify-center m-8">
+        <a href="{{ url('/menu') }}" class="font-semibold bg-orange-400 text-white rounded-full px-4 py-2 hover:text-orange-300">Menu</a>
+    </div>
+    <div class="flex items-center justify-center mt-10">
+        <h2 class="text-4xl font-bold ">Kies eerst een pizza</h2>
+    </div>
+    --}}
+   
+
     <section class="flex flex-wrap lg:flex-nowrap">
         <div class="lg:w-2/3 md:w-full w-full bg-white m-10 p-10 rounded-md shadow-md">
             <h1 class="text-2xl font-bold mb-6">Jou Bestelling</h1>
@@ -80,20 +90,13 @@
                 <input type="hidden" name="ingredient" id="ingredient1" value="{{ $ingredient->id }}">
                 <input type="hidden" name="ingredient2" id="ingredienttwee" value="{{ $ingredient->id }}">
                 <input type="hidden" name="grootte" id="grootte" value="{{ $grootte->id }}">
-                <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 rounded-full">Bereken prijs</button>
+                <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 mb-5 rounded-full">Bereken prijs</button>
             </form>
     
-            <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 rounded-full">Bestellen</button>
+            <a href="{{ url('/status') }}" class="bg-orange-400 text-white rounded-full px-4 py-2 hover:bg-orange-300">Bestellen</a>
         </div>
     </section>
-    {{--
-    <div class="flex items-center justify-center m-8">
-        <a href="{{ url('/menu') }}" class="font-semibold bg-orange-400 text-white rounded-full px-4 py-2 hover:text-orange-300">Menu</a>
-    </div>
-    <div class="flex items-center justify-center mt-10">
-        <h2 class="text-4xl font-bold ">Kies eerst een pizza</h2>
-    </div>
-    --}}
+
 
 
 
