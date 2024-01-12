@@ -75,7 +75,7 @@
             <h1>€{{ number_format($totaalprijs, 2, ',', '.') }}</h1>
             @endif
 
-            <form action="/bereken" method="get">
+            <form action="/bereken" method="post">
                 @csrf
                 <input type="hidden" name="ingredient" id="ingredient1" value="{{ $ingredient->id }}">
                 <input type="hidden" name="ingredient2" id="ingredienttwee" value="{{ $ingredient->id }}">

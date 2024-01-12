@@ -14,22 +14,7 @@ class BerekenController extends Controller
      */
     public function index(Request $request)
     {
-        $ingredient = $request->ingredient;
-        $ingredient2 = $request->ingredient2;
-        $grootte = $request->grootte;
-
-        $groottes = grootte::all();
-        $ingredienten = Ingredienten::all();
-        $order = session('order', []);
-
-        $ingredient = Ingredienten::find($ingredient);
-        $ingredient2 = Ingredienten::find($ingredient2);
-        $grootte = Grootte::find($grootte);
-
-        $totaalprijs = ($ingredient->price + $ingredient2->price) * $grootte->pricefactor;
         
-      
-        return view('mandje', ['totaalprijs' => $totaalprijs, 'order' => $order, 'ingredienten' => $ingredienten, 'groottes' => $groottes]);
     }
 
     /**
@@ -45,7 +30,22 @@ class BerekenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ingredient = $request->ingredient;
+        $ingredient2 = $request->ingredient2;
+        $grootte = $request->grootte;
+
+        $groottes = grootte::all();
+        $ingredienten = Ingredienten::all();
+        $order = session('order', []);
+
+        $ingredient = Ingredienten::find($ingredient);
+        $ingredient2 = Ingredienten::find($ingredient2);
+        $grootte = Grootte::find($grootte);
+
+        $totaalprijs = $ingredient->price + $ingredient2->price * $grootte->pricefactor;
+        
+      
+        return view('mandje', ['totaalprijs' => $totaalprijs, 'order' => $order, 'ingredienten' => $ingredienten, 'groottes' => $groottes]);
     }
 
     /**
