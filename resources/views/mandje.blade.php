@@ -70,20 +70,20 @@
         </div>
     
         <div class="w-full lg:w-1/3 md:w-full bg-slate-100 m-10 p-10 rounded-md shadow-md">
-            <h1 class="text-2xl font-bold mb-6">TotaalPrijs</h1>
+            <h1 class="text-2xl font-bold mb-6">Totaalprijs</h1>
             @if (isset($totaalprijs))
             <h1>€{{ number_format($totaalprijs, 2, ',', '.') }}</h1>
             @endif
-    
+
             <form action="/bereken" method="get">
                 @csrf
                 <input type="hidden" name="ingredient" id="ingredient1" value="{{ $ingredient->id }}">
                 <input type="hidden" name="ingredient2" id="ingredienttwee" value="{{ $ingredient->id }}">
                 <input type="hidden" name="grootte" id="grootte" value="{{ $grootte->id }}">
-                <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-5 rounded">Bereken prijs</button>
+                <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 rounded-full">Bereken prijs</button>
             </form>
     
-            <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-1 px-2 mt-5 rounded">Bestellen</button>
+            <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 rounded-full">Bestellen</button>
         </div>
     </section>
     {{--
