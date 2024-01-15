@@ -57,9 +57,9 @@
                     @endforeach
                 </select>
                 <label class="block text-black mb-2 mt-4" for="ingredient">Extra ingredient</label>
-                <select id="ingredient" name="ingredient" onchange="document.getElementById('ingredient').value = this.value;">
+                <select id="ingredient1" name="ingredient1" onchange="document.getElementById('ingredienteen').value = document.getElementById('ingredient1').value">
                     @foreach ($ingredienten as $ingredient)
-                        <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                      <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
                     @endforeach
                 </select>
 
@@ -88,7 +88,7 @@
             @if (!empty($ingredient) && !empty($grootte))
                 <form action="mandje" method="post">
                     @csrf
-                    <input type="hidden" name="ingredient" id="ingredient1" value="{{ $ingredient->id }}">
+                    <input type="hidden" name="ingredient1" id="ingredienteen" value="{{ $ingredient->id }}">
                     <input type="hidden" name="ingredient2" id="ingredienttwee" value="{{ $ingredient->id }}">
                     <input type="hidden" name="grootte" id="grootte" value="{{ $grootte->id }}">
                     <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 mb-5 rounded-full">Bereken prijs</button>
