@@ -34,6 +34,24 @@ class MandjeController extends Controller
     public function store(Request $request)
     {
         //
+        $ingredient = $request->ingredient;
+        $ingredient2 = $request->ingredient2;
+        $grootte = $request->grootte;
+
+        $groottes = grootte::all();
+        $ingredienten = Ingredienten::all();
+        $order = session('order', []);
+
+
+        $ingredient = ingredienten::find($ingredient);
+        $ingredient2 = ingredienten::find($ingredient2);
+        $grootte = Grootte::find($grootte);
+
+        dd($ingredient,$ingredient->price);
+        $totaalprijs = $ingredient->price + $ingredient2->price * $grootte->pricefactor;
+
+        dd($ingredient->price,$ingredient2->price  ,$totaalprijs);
+        return view('mandje', ['totaalprijs' => $totaalprijs, 'order' => $order, 'ingredienten' => $ingredienten, 'groottes' => $groottes]);
     }
 
     /**
