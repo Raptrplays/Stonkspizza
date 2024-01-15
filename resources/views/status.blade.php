@@ -34,7 +34,7 @@
     </header>
 
     <div class="flex items-center justify-center mt-10">
-            <h2 class="text-4xl font-bold ">Status van je bestelling</h2>
+            <h2 class="text-3xl font-bold md:text-4xl lg:text-4xl">Status van je bestelling</h2>
     </div>
     @if ($statusid > 5)
 
