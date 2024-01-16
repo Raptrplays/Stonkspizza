@@ -9,7 +9,6 @@ use App\Http\Controllers\MedewerkersController;
 use App\Http\Controllers\IngredientenController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MandjeController;
-use App\Http\Controllers\BerekenController;
 use App\Http\Controllers\StatusController;
 
 
@@ -31,7 +30,6 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('mandje', MandjeController::class);
-    Route::resource('bereken', BerekenController::class);
     Route::resource('status', StatusController::class);
     Route::resource('bestel', BestelController::class);
     Route::resource('pizza', PizzaController::class);

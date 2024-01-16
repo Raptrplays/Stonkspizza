@@ -33,19 +33,9 @@
         </div>
     </header>
 
-    {{--
-    <div class="flex items-center justify-center m-8">
-        <a href="{{ url('/menu') }}" class="font-semibold bg-orange-400 text-white rounded-full px-4 py-2 hover:text-orange-300">Menu</a>
-    </div>
-    <div class="flex items-center justify-center mt-10">
-        <h2 class="text-4xl font-bold ">Kies eerst een pizza</h2>
-    </div>
-    --}}
-
-
-    <section class="flex flex-wrap lg:flex-nowrap">
+    {{--<section class="flex flex-wrap lg:flex-nowrap">
         <div class="lg:w-2/3 md:w-full w-full bg-white m-10 p-10 rounded-md shadow-md">
-            <h1 class="text-2xl font-bold mb-6">Jou Bestelling</h1>
+            <h1 class="text-2xl font-bold mb-6">Jouw Bestelling</h1>
             @foreach($order as $item)
             <div>
                 <h1 class="font-bold">{{ $item->name }}</h1>
@@ -92,15 +82,64 @@
                     <input type="hidden" name="ingredient2" id="ingredienttwee" value="{{ $ingredient->id }}">
                     <input type="hidden" name="grootte" id="grootte" value="{{ $grootte->id }}">
                     <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 mb-5 rounded-full">Bereken prijs</button>
+                    <br>
+                    <a href="{{ url('/status') }}" class="bg-orange-400 text-white rounded-full px-4 py-2 hover:bg-orange-300">Bestellen</a>
                 </form>
             @else
                 <p>U heeft nog geen pizzas geselecteerd.</p>
             @endif
             <br>
-
-            <a href="{{ url('/status') }}" class="bg-orange-400 text-white rounded-full px-4 py-2 hover:bg-orange-300">Bestellen</a>
         </div>
-    </section>
+    </section>--}}
+
+        <form action="{{ url('/mandje') }}" method="post" class="flex flex-wrap lg:flex-nowrap">
+            @csrf
+    
+            <div class="lg:w-2/3 md:w-full w-full bg-white m-10 p-10 rounded-md shadow-md">
+                <h1 class="text-2xl font-bold mb-6">Jouw Bestelling</h1>
+                <div class="flex flex-wrap gap-10">
+                @foreach($order as $item)
+                    <div class="mt-5">
+                        <h1 class="font-bold">{{ $item->name }}</h1>
+                        <div class="mt-4">
+                            <label class="block text-black mb-2" for="grootte_{{ $item->id }}">Kies grootte van de pizza</label>
+                            <select id="grootte_{{ $item->id }}" name="grootte_{{ $item->id }}">
+                                @foreach ($groottes as $grootte)
+                                    <option value="{{ $grootte->id }}">{{ $grootte->name }}</option>
+                                @endforeach
+                            </select>
+    
+                            <label class="block text-black mb-2 mt-4" for="ingredient1_{{ $item->id }}">Extra ingrediënt</label>
+                            <select id="ingredient1_{{ $item->id }}" name="ingredient1_{{ $item->id }}" onchange="document.getElementById('ingredienteen_{{ $item->id }}').value = this.value">
+                                @foreach ($ingredienten as $ingredient)
+                                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                                @endforeach
+                            </select>
+    
+                            <label class="block text-black mb-2 mt-4" for="ingredient2_{{ $item->id }}">Verwijder ingrediënt</label>
+                            <select id="ingredient2_{{ $item->id }}" name="ingredient2_{{ $item->id }}" onchange="document.getElementById('ingredienttwee_{{ $item->id }}').value = this.value">
+                                @foreach ($ingredienten as $ingredient)
+                                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                @endforeach
+                </div>
+            </div>
+    
+            <div class="w-full lg:w-1/3 md:w-full bg-slate-100 m-10 p-10 rounded-md shadow-md">
+                <h1 class="text-2xl font-bold mb-6">Totaalprijs</h1>
+                @if (isset($totaalprijs))
+                    <h1>€{{ number_format($totaalprijs, 2, ',', '.') }}</h1>
+                @endif
+    
+                <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 mb-5 rounded-full">Bereken prijs</button>
+                <br>
+                <a href="{{ url('/status') }}" class="bg-orange-400 text-white rounded-full px-4 py-2 hover:bg-orange-300">Bestellen</a>
+            </div>
+        </form>
+    
 
 
 

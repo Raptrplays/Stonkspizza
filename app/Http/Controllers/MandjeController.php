@@ -33,23 +33,42 @@ class MandjeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $ingredient1 = $request->ingredient1;
-        $ingredient2 = $request->ingredient2;
-        $grootte = $request->grootte;
-
-        $groottes = grootte::all();
-        $ingredienten = Ingredienten::all();
+        $requestData = $request->all();
         $order = session('order', []);
-
-
-        $ingredient1 = ingredienten::find($ingredient1);
-        $ingredient2 = ingredienten::find($ingredient2);
-        $grootte = Grootte::find($grootte);
-
-        $totaalprijs = $ingredient1->price + $ingredient2->price * $grootte->pricefactor;
-
-        return view('mandje', ['totaalprijs' => $totaalprijs, 'order' => $order, 'ingredienten' => $ingredienten, 'groottes' => $groottes]);
+        $groottes = Grootte::all();
+        $ingredienten = Ingredienten::all();
+        
+        foreach ($order as $item) {
+            $itemId = $item->id;
+        
+            $selectedGrootte = $requestData['grootte_' . $itemId];
+            $selectedIngredient1 = $requestData['ingredient1_' . $itemId];
+            $selectedIngredient2 = $requestData['ingredient2_' . $itemId];
+        
+            $grootte = Grootte::find($selectedGrootte);
+            $ingredient1 = Ingredienten::find($selectedIngredient1);
+            $ingredient2 = Ingredienten::find($selectedIngredient2);
+        
+            $itemTotaalprijs = $ingredient1->price + $ingredient2->price * $grootte->pricefactor;
+        
+            $item->grootte = $grootte;
+            $item->ingredient1 = $ingredient1;
+            $item->ingredient2 = $ingredient2;
+            $item->totaalprijs = $itemTotaalprijs;
+        }
+        
+        $totaalprijs = 0;
+        foreach ($order as $item) {
+            $totaalprijs += $item->totaalprijs;
+        }
+        
+        return view('mandje', [
+            'totaalprijs' => $totaalprijs,
+            'order' => $order,
+            'ingredienten' => $ingredienten,
+            'groottes' => $groottes
+        ]);
+        
     }
 
     /**
@@ -92,6 +111,6 @@ class MandjeController extends Controller
             session(['order' => array_values($order)]);
         }
 
-        return back();
+        return redirect('mandje');
     }
 }
