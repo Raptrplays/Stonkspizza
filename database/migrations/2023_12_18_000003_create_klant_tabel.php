@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('telefoonnummer');
             $table->string('city');
             $table->integer('pizza_punten');
+            $table->foreignId('user_id')->default(1)->nullable(false)->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
