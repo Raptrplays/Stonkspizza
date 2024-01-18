@@ -14,10 +14,9 @@ class MandjeController extends Controller
      */
     public function index()
     {
-        $ingredienten = ingredienten::all();
         $groottes = grootte::all();
         $order = session('order', []);
-        return view('mandje', [ 'ingredienten' => $ingredienten, 'groottes' => $groottes, 'order' => $order]);
+        return view('mandje', ['groottes' => $groottes, 'order' => $order]);
     }
 
     /**
@@ -36,24 +35,19 @@ class MandjeController extends Controller
         $requestData = $request->all();
         $order = session('order', []);
         $groottes = Grootte::all();
-        $ingredienten = Ingredienten::all();
+        $pizzas = pizzas::all();
         
         foreach ($order as $item) {
             $itemId = $item->id;
         
             $selectedGrootte = $requestData['grootte_' . $itemId];
-            $selectedIngredient1 = $requestData['ingredient1_' . $itemId];
-            $selectedIngredient2 = $requestData['ingredient2_' . $itemId];
         
             $grootte = Grootte::find($selectedGrootte);
-            $ingredient1 = Ingredienten::find($selectedIngredient1);
-            $ingredient2 = Ingredienten::find($selectedIngredient2);
-        
-            $itemTotaalprijs = $ingredient1->price + $ingredient2->price * $grootte->pricefactor;
+            $pizza = pizzas::find($itemId);
+
+            $itemTotaalprijs = $pizza->prijs * $grootte->pricefactor;
         
             $item->grootte = $grootte;
-            $item->ingredient1 = $ingredient1;
-            $item->ingredient2 = $ingredient2;
             $item->totaalprijs = $itemTotaalprijs;
         }
         
@@ -65,7 +59,6 @@ class MandjeController extends Controller
         return view('mandje', [
             'totaalprijs' => $totaalprijs,
             'order' => $order,
-            'ingredienten' => $ingredienten,
             'groottes' => $groottes
         ]);
         
@@ -102,10 +95,8 @@ class MandjeController extends Controller
     {
         $order = session('order', []);
 
-        // Find the index of the pizza in the order array
         $index = array_search($pizza_id, array_column($order, 'id'));
 
-        // If the pizza is found, remove it from the order
         if ($index !== false) {
             unset($order[$index]);
             session(['order' => array_values($order)]);

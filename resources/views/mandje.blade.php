@@ -94,7 +94,6 @@
 
         <form action="{{ url('/mandje') }}" method="post" class="flex flex-wrap lg:flex-nowrap">
             @csrf
-    
             <div class="lg:w-2/3 md:w-full w-full bg-white m-10 p-10 rounded-md shadow-md">
                 <h1 class="text-2xl font-bold mb-6">Jouw Bestelling</h1>
                 <div class="flex flex-wrap gap-10">
@@ -106,20 +105,6 @@
                             <select id="grootte_{{ $item->id }}" name="grootte_{{ $item->id }}">
                                 @foreach ($groottes as $grootte)
                                     <option value="{{ $grootte->id }}">{{ $grootte->name }}</option>
-                                @endforeach
-                            </select>
-    
-                            <label class="block text-black mb-2 mt-4" for="ingredient1_{{ $item->id }}">Extra ingrediënt</label>
-                            <select id="ingredient1_{{ $item->id }}" name="ingredient1_{{ $item->id }}" onchange="document.getElementById('ingredienteen_{{ $item->id }}').value = this.value">
-                                @foreach ($ingredienten as $ingredient)
-                                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
-                                @endforeach
-                            </select>
-    
-                            <label class="block text-black mb-2 mt-4" for="ingredient2_{{ $item->id }}">Verwijder ingrediënt</label>
-                            <select id="ingredient2_{{ $item->id }}" name="ingredient2_{{ $item->id }}" onchange="document.getElementById('ingredienttwee_{{ $item->id }}').value = this.value">
-                                @foreach ($ingredienten as $ingredient)
-                                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -139,10 +124,5 @@
                 <a href="{{ url('/status') }}" class="bg-orange-400 text-white rounded-full px-4 py-2 hover:bg-orange-300">Bestellen</a>
             </div>
         </form>
-    
-
-
-
-
 </body>
 </html>

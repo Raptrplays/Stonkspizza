@@ -50,6 +50,7 @@
                 <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emElMjB0b3AlMjBwb3Z8ZW58MHwwfDB8fHwy" alt="foto" class="w-full h-48 object-cover mb-4 rounded-md">
                 <h2 class="text-xl font-bold mb-2">{{ $pizza->name }}</h2>
                 <p class="text-gray-700">{{ $pizza->beschrijving }}</p>
+                <p class="text-gray-700 font-bold mt-2">Prijs: €{{ number_format($pizza->prijs, 2, ',', '.') }}</p>
 
             @guest
             <button type="button" disabled class="bg-orange-400 text-white py-1 px-2 mt-2 rounded">Log in om toe te voegen aan je bestelling</button>
