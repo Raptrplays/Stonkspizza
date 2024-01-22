@@ -102,7 +102,7 @@
                         <h1 class="font-bold">{{ $item->name }}</h1>
                         <div class="mt-4">
                             <label class="block text-black mb-2" for="grootte_{{ $item->id }}">Kies grootte van de pizza</label>
-                            <select id="grootte_{{ $item->id }}" name="grootte_{{ $item->id }}">
+                            <select id="grootte_{{ $item->id }}" name="grootte_{{ $item->id }}" onchange="document.getElementById('Grootte').value = document.getElementById('grootte_{{ $item->id }}').value">
                                 @foreach ($groottes as $grootte)
                                     <option value="{{ $grootte->id }}">{{ $grootte->name }}</option>
                                 @endforeach
@@ -118,11 +118,26 @@
                 @if (isset($totaalprijs))
                     <h1>€{{ number_format($totaalprijs, 2, ',', '.') }}</h1>
                 @endif
-    
+
+                @if (!empty($grootte))
                 <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 mt-5 mb-5 rounded-full">Bereken prijs</button>
                 <br>
-                <a href="{{ url('/status') }}" class="bg-orange-400 text-white rounded-full px-4 py-2 hover:bg-orange-300">Bestellen</a>
+            </form>
+
+            <form action="/bestel" method="post">
+            @csrf
+                @foreach($order as $item)
+                <input type="hidden" name="grootte_{{ $item->id }}" id="Grootte" value="{{ $grootte->id }}">
+                <input type="hidden" name="pizza_id_{{ $item->id }}" id="pizza_id_{{ $item->id }}" value="{{ $item->id }}">
+                @endforeach
+                <button type="submit" class="bg-orange-400 hover:bg-orange-300 text-white py-2 px-4 rounded-full">Bestellen</button>
+            </form>
+
+            @else
+            <p>U heeft nog geen pizzas geselecteerd.</p>
+            @endif
+            <br>
             </div>
-        </form>
+
 </body>
 </html>

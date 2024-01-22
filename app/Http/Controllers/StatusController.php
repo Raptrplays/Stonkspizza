@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bestellingen;
+use App\Models\status;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -11,8 +13,11 @@ class StatusController extends Controller
      */
     public function index()
     {
-       $statusid = 1;
-       return view('status', ['statusid' => $statusid]);
+        $status = bestellingen::first();
+
+        $statusId = $status->status_id;
+         
+        return view('status', ['statusid' => $statusId]);
     }
 
     /**

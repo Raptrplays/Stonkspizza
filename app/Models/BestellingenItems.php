@@ -9,6 +9,12 @@ class bestellingenitems extends Model
 {
     use HasFactory;
     protected $table = 'bestellingen_items';
+
+    protected $fillable = [
+        'pizza_id',
+        'order_id',
+        'grootte_id'
+    ];
     public $timestamps = false;
 
     public function size()
@@ -26,19 +32,4 @@ class bestellingenitems extends Model
         return $this->belongsTo(pizzas::class);
     }
 
-    public function ingredients()
-    {
-        return $this->belongsToMany(ingredienten::class)->withPivot('quantity');;
-    }
-
-    public function price()
-    {
-        $price = 0;
-        foreach ($this->ingredients as $ingredient)
-        {
-            $ingredientprice = $ingredient->price * $ingredient->pivot->quantity * $this->size->pricefactor;
-            $price +=  $ingredientprice;
-        }
-        return $price;
-    }
 }
