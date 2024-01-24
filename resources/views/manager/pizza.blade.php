@@ -17,7 +17,7 @@
                 @if (Route::has('login'))
                 <div class="text-right">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="font-semibold text-orange-400 hover:text-orange-300">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
@@ -31,42 +31,38 @@
         </div>
     </header>
 
-    <tbody>
-        <table class="table text-black">
+    <div class="container mx-auto p-4 overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-300">
             <thead>
-              <tr>
-                <th>Pizza</th>
-                <th>beschrijving</th>
-                <th>Id</th>
-              </tr>
+                <tr>
+                    <th class="py-2 px-4 border-b">Pizza</th>
+                    <th class="py-2 px-4 border-b">Beschrijving</th>
+                    <th class="py-2 px-4 border-b">Prijs</th>
+                    <th class="py-2 px-4 border-b">Acties</th>
+                </tr>
             </thead>
-              <tbody>
+            <tbody>
                 @foreach($pizzas as $pizza)
                     <tr>
-                        <td class="px-4 py-3">
-                            {{ $pizza->name }}
-                        </td>
-                        <td class="px-4 py-3 max-w-sm">
-                            {{ $pizza->beschrijving}}
-                        </td>
-                        <td class="px-4 py-3">
-                            {{ $pizza->id}}
-                        </td>
-                        <td class="px-4 py-3">
-                            <a href="{{ url('pizza/' . $pizza->id . '/edit') }}" class="bg-blue-600 hover:bg-blue-300 text-yellow-50 py-1 px-1 m-3 rounded">Pas pizza aan</a>
-                            <form action="{{ url('pizza/' . $pizza->id) }}" method="post">
+                        <td class="py-2 px-4 border-b">{{ $pizza->name }}</td>
+                        <td class="py-2 px-4 border-b max-w-4xl">{{ $pizza->beschrijving }}</td>
+                        <td class="py-2 px-4 border-b">€{{ number_format($pizza->prijs, 2, ',', '.') }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="{{ url('pizza/' . $pizza->id . '/edit') }}" class="bg-blue-600 hover:bg-blue-300 text-yellow-50 py-1 px-1 rounded">Pas pizza aan</a>
+                            <form action="{{ url('pizza/' . $pizza->id) }}" method="post" class="inline-block">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 m-3 rounded">Verwijder pizza</button>
+                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 rounded">Verwijder pizza</button>
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
             </tbody>
         </table>
-        <button class="bg-green-800 text-yellow-50 py-1 px-1 m-3 rounded">
+
+        <button class="bg-green-800 text-yellow-50 py-1 px-1 mt-3 rounded">
             <a href="pizza/create">Voeg nieuwe pizza toe</a>
         </button>
-    </tbody>
+    </div>
 </body>
 </html>

@@ -19,6 +19,10 @@
             <label class="block text-yellow-50 font-bold mb-2" for="beschrijving">Beschrijving</label>
             <textarea id="beschrijving" name="beschrijving" placeholder="beschrijving" class="border-black border rounded w-full py-2 px-3 bg-neutral-200 resize-y overflow-hidden">{{ $pizza->beschrijving }}</textarea>
         </div>
+        <div class="mb-5">
+            <label class="block text-yellow-50 font-bold mb-2" for="prijs">Prijs</label>
+            <textarea id="prijs" name="prijs" placeholder="prijs" class="border-black border rounded w-full py-2 px-3 bg-neutral-200 resize-y overflow-hidden">{{ $pizza->prijs }}</textarea>
+        </div>
               
         <div>
             <button type="submit" class="bg-green-800 text-yellow-50 py-2 px-4 rounded">Aanpassen</button>

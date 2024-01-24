@@ -21,6 +21,11 @@
     </label>
     <input type="text" name="beschrijving" id="beschrijving" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
 
+    <label for="prijs" class="block text-yellow-50 font-bold mb-2">
+        Prijs
+    </label>
+    <input type="number" name="prijs" id="prijs" class="border-black border rounded w-full py-2 px-3 text-gray-700 bg-neutral-200">
+
     <input type="submit" value="Maak nieuwe pizza aan" class="bg-green-800 text-yellow-50 py-2 px-4 mt-5 rounded">
 </form>
 

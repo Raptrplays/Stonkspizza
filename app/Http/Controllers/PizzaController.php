@@ -31,9 +31,11 @@ class PizzaController extends Controller
         $p = new pizzas;
         $name = $request->name;
         $beschrijving = $request->beschrijving;
+        $prijs = $request->prijs;
 
         $p->name = $name;
         $p->beschrijving = $beschrijving;
+        $p->prijs = $prijs;
 
         $p->save();
         
@@ -65,9 +67,12 @@ class PizzaController extends Controller
         $p = pizzas::find($id);
         $name = $request->name;
         $beschrijving = $request->beschrijving;
+        $prijs = $request->prijs;
 
         $p->beschrijving = $beschrijving;
         $p->name = $name;
+        $p->prijs = $prijs;
+
         $p->save();
 
         return redirect('pizza');
