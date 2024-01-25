@@ -16,6 +16,6 @@ class rechten extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class, 'user_roles', 'role_id', 'user_id');
+        return $this->hasMany(User::class, 'role_id');
     }
 }
