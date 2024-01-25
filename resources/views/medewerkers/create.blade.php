@@ -8,7 +8,7 @@
     <title>Maak nieuwe medewerker aan</title>
 </head>
 <body>
-    <form action="/medewerker" method="POST" class="max-w-md mx-auto bg-neutral-900 p-6 rounded-lg mt-10">
+    <form action="/medewerkers" method="POST" class="max-w-md mx-auto bg-neutral-900 p-6 rounded-lg mt-10">
         @csrf
         <label for="voornaam" class="block text-yellow-50 font-bold mb-2">
             Voornaam

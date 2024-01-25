@@ -36,11 +36,11 @@ class MedewerkersController extends Controller
         $stad = $request->stad;
         $BSN = $request->BSN;
 
-        $m->first_name = $voornaam;
-        $m->last_name = $achternaam;
-        $m->address = $adres;
-        $m->phone = $telefoonnummer;
-        $m->city = $stad;
+        $m->voornaam = $voornaam;
+        $m->achternaam = $achternaam;
+        $m->adres = $adres;
+        $m->telefoonnummer = $telefoonnummer;
+        $m->stad = $stad;
         $m->burger_service_nummer = $BSN;
         $m->save();
         
@@ -61,7 +61,7 @@ class MedewerkersController extends Controller
     public function edit(string $id)
     {
         $medewerker = medewerkers::find($id);
-        return view('medewerker.edit', compact( 'medewerker' ));
+        return view('medewerkers.edit', compact( 'medewerker' ));
     }
 
     /**
@@ -70,18 +70,18 @@ class MedewerkersController extends Controller
     public function update(Request $request, string $id)
     {
         $m = medewerkers::find($id);
-        $voornaam = $request->first_name;
-        $achternaam = $request->last_name;
-        $adres = $request->addres;
-        $telefoonnummer = $request->phone;
-        $stad = $request->city;
+        $voornaam = $request->voornaam;
+        $achternaam = $request->achternaam;
+        $adres = $request->adres;
+        $telefoonnummer = $request->telefoonnummer;
+        $stad = $request->stad;
         $BSN = $request->burger_service_nummer;
 
-        $m->first_name = $voornaam;
-        $m->last_name = $achternaam;
-        $m->address = $adres;
-        $m->phone = $telefoonnummer;
-        $m->city = $stad;
+        $m->voornaam = $voornaam;
+        $m->achternaam = $achternaam;
+        $m->adres = $adres;
+        $m->telefoonnummer = $telefoonnummer;
+        $m->stad = $stad;
         $m->burger_service_nummer = $BSN;
         $m->save();
 
