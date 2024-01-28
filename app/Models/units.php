@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use app\Models\ingredienten;
 
 class units extends Model
 {
@@ -11,5 +12,7 @@ class units extends Model
     protected $table = 'eenheid';
     public $timestamps = false;
 
-    
+    public function ingredients() {
+        return $this->hasMany(Ingredienten::class);
+    }
 }

@@ -16,38 +16,29 @@
         </div>
     </header>
 
-    <tbody>
-        <table class="table text-black">
+    <div class="container mx-auto p-4 overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-300">
             <thead>
-              <tr>
-                <th>Ingredient</th>
-                <th>Eenheid</th>
-                <th>Prijs</th>
-                <th>Id</th>
-              </tr>
+                <tr>
+                    <th class="py-2 px-4 border-b">Ingredient</th>
+                    <th class="py-2 px-4 border-b">Eenheid</th>
+                    <th class="py-2 px-4 border-b">Prijs</th>
+                    <th class="py-2 px-4 border-b">Acties</th>
+                </tr>
             </thead>
-              <tbody>
-                @foreach ($ingredients as $ingredient)
-                    @foreach ($ingredient->units as $unit)
+            <tbody>
+                @foreach($ingredients as $ingredient)
+                    @foreach($ingredient->units as $unit)                    
                     <tr>
-                        <td class="px-4 py-3">
-                            {{ $ingredient->name}}
-                        </td>
-                        <td class="px-4 py-3">
-                            {{ $unit->name }}
-                        </td>
-                        <td class="px-4 py-3">
-                            {{ $ingredient->price }}
-                        </td>
-                        <td class="px-4 py-3">
-                            {{ $ingredient->id }}
-                        </td>
-                        <td class="px-4 py-3">
-                            <a href="{{ url('ingredienten/' . $ingredient->id . '/edit') }}" class="bg-blue-600 hover:bg-blue-300 text-yellow-50 py-1 px-1 m-3 rounded">Pas ingredient aan</a>
-                            <form action="{{ url('ingredienten/' . $ingredienten->id) }}" method="post">
+                        <td class="py-2 px-4 border-b">{{ $ingredient->name }}</td>
+                        <td class="py-2 px-4 border-b max-w-4xl">{{ $unit->name }}</td>
+                        <td class="py-2 px-4 border-b">€{{ number_format($ingredient->price, 2, ',', '.') }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="{{ url('ingredienten/' . $ingredient->id . '/edit') }}" class="bg-blue-600 hover:bg-blue-300 text-yellow-50 py-1 px-1 rounded">Pas ingredient aan</a>
+                            <form action="{{ url('ingredienten/' . $ingredient->id) }}" method="post" class="inline-block">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 m-3 rounded">Verwijder ingredient</button>
+                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-yellow-50 py-1 px-1 rounded">Verwijder ingredient</button>
                             </form>
                         </td>
                     </tr>
@@ -55,9 +46,10 @@
                 @endforeach
             </tbody>
         </table>
-        <button class="bg-green-800 text-yellow-50 py-1 px-1 m-3 rounded">
+
+        <button class="bg-green-800 text-yellow-50 py-1 px-1 mt-3 rounded">
             <a href="ingredienten/create">Voeg nieuw ingredient toe</a>
         </button>
-    </tbody>
+    </div>
 </body>
 </html>
