@@ -10,6 +10,7 @@ use App\Http\Controllers\IngredientenController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MandjeController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\EenhedenController;
 
 
 Route::get('/', function () {
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('status', StatusController::class);
     Route::resource('bestel', BestelController::class);
     Route::resource('pizza', PizzaController::class);
+    Route::resource('eenheden', EenhedenController::class);
     Route::resource('medewerkers', MedewerkersController::class);
     Route::resource('ingredienten', IngredientenController::class);
 });
