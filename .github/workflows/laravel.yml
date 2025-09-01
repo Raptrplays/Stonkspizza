@@ -48,6 +48,17 @@ jobs:
       - name: Copy .env
         run: cp .env.example .env
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
       - name: Set DB credentials in .env
         run: |
           php -r "file_put_contents('.env', str_replace(
