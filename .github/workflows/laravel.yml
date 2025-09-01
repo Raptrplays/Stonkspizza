@@ -42,22 +42,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: Install dependencies
+      - name: Install PHP dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Copy .env
         run: cp .env.example .env
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install Node dependencies
-        run: npm ci
-
-      - name: Build frontend assets
-        run: npm run build
 
       - name: Set DB credentials in .env
         run: |
@@ -69,6 +58,34 @@ jobs:
 
       - name: Generate key
         run: php artisan key:generate
+
+      - name: Run PHP syntax check
+        run: find app/ -type f -name "*.php" -exec php -l {} \;
+
+      - name: Run Laravel Pint
+        run: ./vendor/bin/pint --test
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint --if-present
+
+      - name: Build frontend assets
+        run: npm run build
 
       - name: Run migrations
         env:
@@ -90,9 +107,9 @@ jobs:
           DB_PASSWORD: root
         run: php artisan test
 
-      - name: Deploy to server
+      - name: Deploy to server (simulation)
         if: github.ref == 'refs/heads/main'
         run: |
           echo "Deploying Laravel app..."
-          # Example for SSH deployment:
-          # rsync -avz --exclude '.git' ./ user@your-server:/var/www/laravel-app
+          echo "Running migrations on production..."
+          echo "Restarting services..."
