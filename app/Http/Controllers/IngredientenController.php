@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\ingredienten;
 use App\Models\units;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class IngredientenController extends Controller
     {
         $ingredients = ingredienten::all();
         $units = units::all();
+
         return view('manager/ingredienten', ['ingredients' => $ingredients, 'units' => $units]);
     }
 
@@ -24,7 +26,7 @@ class IngredientenController extends Controller
     {
         $units = units::all();
 
-        return view ('ingredienten.create', ['units' => $units]);
+        return view('ingredienten.create', ['units' => $units]);
     }
 
     /**
@@ -67,7 +69,7 @@ class IngredientenController extends Controller
         $ingredients = ingredienten::find($id);
         $units = units::all();
 
-        return view('ingredienten.edit', compact( 'ingredients', 'units'));
+        return view('ingredienten.edit', compact('ingredients', 'units'));
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\pizzas;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class PizzaController extends Controller
     public function index()
     {
         $pizzas = pizzas::all();
+
         return view('manager/pizza', ['pizzas' => $pizzas]);
     }
 
@@ -20,7 +22,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view ('pizza.create');
+        return view('pizza.create');
     }
 
     /**
@@ -38,7 +40,7 @@ class PizzaController extends Controller
         $p->prijs = $prijs;
 
         $p->save();
-        
+
         return redirect('pizza');
     }
 
@@ -56,7 +58,8 @@ class PizzaController extends Controller
     public function edit(string $id)
     {
         $pizza = pizzas::find($id);
-        return view('pizza.edit', compact( 'pizza' ));
+
+        return view('pizza.edit', compact('pizza'));
     }
 
     /**

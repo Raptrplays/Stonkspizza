@@ -14,7 +14,7 @@ class IngredientenPizza extends Model
         'ingredient_id',
     ];
 
-    protected $table = "ingredienten_van_pizza";
+    protected $table = 'ingredienten_van_pizza';
 
     public function ingredient()
     {

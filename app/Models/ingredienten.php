@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use app\models\units;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\models\units;
 
 class ingredienten extends Model
 {
     use HasFactory;
 
     protected $table = 'ingredienten';
+
     public $timestamps = false;
 
     public function pizzas()

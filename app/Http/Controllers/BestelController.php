@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\bestellingen;
 use App\Models\bestellingenitems;
-use App\Models\pizzas;
 use App\Models\grootte;
+use App\Models\pizzas;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
 
 class BestelController extends Controller
 {
@@ -47,13 +45,13 @@ class BestelController extends Controller
         $orderId = rand($min, $max);
 
         Bestellingen::create([
-            'id' => $orderId
+            'id' => $orderId,
         ]);
 
         foreach ($order as $item) {
             $itemId = $item->id;
 
-            $selectedGrootte = $requestData['grootte_' . $itemId];
+            $selectedGrootte = $requestData['grootte_'.$itemId];
 
             $grootte = Grootte::find($selectedGrootte);
             $pizza = Pizzas::find($itemId);
@@ -67,7 +65,6 @@ class BestelController extends Controller
 
         return redirect()->route('status.index');
     }
-
 
     /**
      * Display the specified resource.

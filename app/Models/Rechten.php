@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class rechten extends Model
 {
     use HasFactory;
+
     protected $table = 'rechten';
+
     protected $fillable = [
         'id',
         'name',

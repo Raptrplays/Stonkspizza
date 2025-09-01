@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\ingredienten;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class Ingredienten_Seeder extends Seeder
@@ -16,7 +15,6 @@ class Ingredienten_Seeder extends Seeder
         //100 gram id => 1
         //1 stuk id => 2
         // 10 stuks id => 3
-
 
         ingredienten::insert([
             'id' => 1,

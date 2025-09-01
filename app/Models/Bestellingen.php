@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class bestellingen extends Model
 {
     use HasFactory;
+
     protected $table = 'bestellingen';
+
     public $timestamps = false;
 
     protected $fillable = ['id'];
@@ -22,5 +24,4 @@ class bestellingen extends Model
     {
         return $this->belongsTo(Status::class);
     }
-
 }

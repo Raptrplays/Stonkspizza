@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\medewerkers;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class MedewerkersController extends Controller
     public function index()
     {
         $medewerkers = medewerkers::all();
+
         return view('manager/medewerkers', ['medewerkers' => $medewerkers]);
     }
 
@@ -20,7 +22,7 @@ class MedewerkersController extends Controller
      */
     public function create()
     {
-        return view ('medewerkers.create');
+        return view('medewerkers.create');
     }
 
     /**
@@ -43,7 +45,7 @@ class MedewerkersController extends Controller
         $m->stad = $stad;
         $m->burger_service_nummer = $BSN;
         $m->save();
-        
+
         return redirect('medewerkers');
     }
 
@@ -61,7 +63,8 @@ class MedewerkersController extends Controller
     public function edit(string $id)
     {
         $medewerker = medewerkers::find($id);
-        return view('medewerkers.edit', compact( 'medewerker' ));
+
+        return view('medewerkers.edit', compact('medewerker'));
     }
 
     /**

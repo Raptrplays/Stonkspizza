@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class Users_Seeder extends Seeder
 {
@@ -38,6 +36,6 @@ class Users_Seeder extends Seeder
             'password' => Hash::make('Klant12345@'),
             'role_id' => '1',
         ]);
-    
+
     }
 }

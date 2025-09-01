@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\bestellingen;
-use App\Models\status;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -16,7 +15,7 @@ class StatusController extends Controller
         $status = bestellingen::first();
 
         $statusId = $status->status_id;
-         
+
         return view('status', ['statusid' => $statusId]);
     }
 

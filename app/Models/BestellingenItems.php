@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class bestellingenitems extends Model
 {
     use HasFactory;
+
     protected $table = 'bestellingen_items';
 
     protected $fillable = [
         'pizza_id',
         'order_id',
-        'grootte_id'
+        'grootte_id',
     ];
+
     public $timestamps = false;
 
     public function size()
@@ -31,5 +33,4 @@ class bestellingenitems extends Model
     {
         return $this->belongsTo(pizzas::class);
     }
-
 }

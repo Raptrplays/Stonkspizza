@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\units;
+use Illuminate\Http\Request;
 
 class EenhedenController extends Controller
 {
@@ -13,8 +13,9 @@ class EenhedenController extends Controller
     public function index()
     {
         $units = units::all();
+
         return view('manager/eenheden', ['units' => $units]);
-    
+
     }
 
     /**
@@ -24,7 +25,7 @@ class EenhedenController extends Controller
     {
         $units = units::all();
 
-        return view ('eenheden.create', ['units' => $units]);
+        return view('eenheden.create', ['units' => $units]);
     }
 
     /**

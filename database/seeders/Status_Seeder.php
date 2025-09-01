@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Status;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class Status_Seeder extends Seeder
@@ -40,4 +39,3 @@ class Status_Seeder extends Seeder
         ]);
     }
 }
-

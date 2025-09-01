@@ -1,17 +1,15 @@
 <?php
 
 use App\Http\Controllers\BestelController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\PizzaController;
-use App\Http\Controllers\MedewerkersController;
-use App\Http\Controllers\IngredientenController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\MandjeController;
-use App\Http\Controllers\StatusController;
 use App\Http\Controllers\EenhedenController;
-
+use App\Http\Controllers\IngredientenController;
+use App\Http\Controllers\MandjeController;
+use App\Http\Controllers\MedewerkersController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StatusController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('/menu');

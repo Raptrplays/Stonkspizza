@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\rechten;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class Rechten_Seeder extends Seeder
