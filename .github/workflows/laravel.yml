@@ -22,7 +22,6 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -41,7 +40,6 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-
       - name: Install PHP dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
@@ -50,14 +48,11 @@ jobs:
 
       - name: Set DB credentials in .env
         run: |
-          DB_DATABASE=stonkspizza
-          DB_USERNAME=root
-          DB_PASSWORD=root
-
-          grep -q '^DB_DATABASE=' .env && sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$DB_DATABASE/" .env || echo "DB_DATABASE=$DB_DATABASE" >> .env
-          grep -q '^DB_USERNAME=' .env && sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$DB_USERNAME/" .env || echo "DB_USERNAME=$DB_USERNAME" >> .env
-          grep -q '^DB_PASSWORD=' .env && sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$DB_PASSWORD/" .env || echo "DB_PASSWORD=$DB_PASSWORD" >> .env
-
+          php -r "file_put_contents('.env', str_replace(
+            ['DB_DATABASE=', 'DB_USERNAME=', 'DB_PASSWORD='],
+            ['DB_DATABASE=stonkspizza','DB_USERNAME=root','DB_PASSWORD=root'],
+            file_get_contents('.env')
+          ));"
       - name: Generate key
         run: php artisan key:generate
 
@@ -79,7 +74,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - name: Install Node dependencies
         run: npm ci
 
