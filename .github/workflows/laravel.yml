@@ -45,17 +45,21 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - name: Copy .env.example
+      - name: Copy .env example
         run: cp .env.example .env
 
-      - name: Inject environment variables from GitHub Secrets
+      - name: Inject DB credentials into .env
+        env:
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
           php -r "file_put_contents('.env', str_replace(
-            ['DB_DATABASE=', 'DB_USERNAME=', 'DB_PASSWORD='],
-            ['DB_DATABASE=' . '${{ secrets.DB_DATABASE }}',
-             'DB_USERNAME=' . '${{ secrets.DB_USERNAME }}',
-             'DB_PASSWORD=' . '${{ secrets.DB_PASSWORD }}'],
-            file_get_contents('.env')
+              ['DB_DATABASE=', 'DB_USERNAME=', 'DB_PASSWORD='],
+              ['DB_DATABASE=' . getenv('DB_DATABASE'),
+               'DB_USERNAME=' . getenv('DB_USERNAME'),
+               'DB_PASSWORD=' . getenv('DB_PASSWORD')],
+              file_get_contents('.env')
           ));"
 
       - name: Generate key
