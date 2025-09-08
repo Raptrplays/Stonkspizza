@@ -45,10 +45,10 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - name: Copy .env.example to .env
+      - name: Copy .env.example
         run: cp .env.example .env
 
-      - name: Inject DB secrets into .env
+      - name: Inject DB secrets
         run: |
           php -r "file_put_contents('.env', str_replace(
             ['DB_DATABASE=', 'DB_USERNAME=', 'DB_PASSWORD='],
@@ -58,7 +58,7 @@ jobs:
             file_get_contents('.env')
           ));"
 
-      - name: Generate Laravel key
+      - name: Generate key
         run: php artisan key:generate
 
       - name: Run PHP syntax check
