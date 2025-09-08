@@ -50,9 +50,13 @@ jobs:
 
       - name: Set DB credentials in .env
         run: |
-          sed -i "s/DB_DATABASE=.*/DB_DATABASE=stonkspizza/" .env
-          sed -i "s/DB_USERNAME=.*/DB_USERNAME=root/" .env
-          sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=root/" .env
+          DB_DATABASE=stonkspizza
+          DB_USERNAME=root
+          DB_PASSWORD=root
+
+          grep -q '^DB_DATABASE=' .env && sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$DB_DATABASE/" .env || echo "DB_DATABASE=$DB_DATABASE" >> .env
+          grep -q '^DB_USERNAME=' .env && sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$DB_USERNAME/" .env || echo "DB_USERNAME=$DB_USERNAME" >> .env
+          grep -q '^DB_PASSWORD=' .env && sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$DB_PASSWORD/" .env || echo "DB_PASSWORD=$DB_PASSWORD" >> .env
 
       - name: Generate key
         run: php artisan key:generate
