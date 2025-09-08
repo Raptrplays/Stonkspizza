@@ -86,6 +86,17 @@ jobs:
       - name: Build frontend assets
         run: npm run build
 
+      - name: Wait for MySQL service
+        run: |
+          for i in {1..30}; do
+            if mysql -h mysql -u ${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }} -e "SELECT 1;" ; then
+              echo "MySQL is ready"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+
       - name: Run migrations
         env:
           DB_CONNECTION: mysql
