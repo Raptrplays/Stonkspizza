@@ -20,3 +20,11 @@ services:
       php artisan migrate --force &&
       apache2-foreground
       "
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: stonkspizza
+    ports:
+      - "3306:3306"
