@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   app:
     build: .
@@ -13,13 +11,11 @@ services:
       - db
     command: >
       sh -c "
-      until php -r 'new PDO(\"mysql:host=db;dbname=stonkspizza\", \"root\", \"root\");'; do
+      until php -r 'new PDO(\"mysql:host=db;dbname=stonkspizza\", \"root\", \"root\");' 2>/dev/null; do
         echo 'Waiting for database...';
         sleep 2;
       done &&
       php artisan migrate --force &&
-      npm install &&
-      npm run build &&
       apache2-foreground
       "
 
