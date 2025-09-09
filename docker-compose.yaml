@@ -9,17 +9,6 @@ services:
       - .env
     depends_on:
       - db
-    command: >
-      sh -c "
-      until php -r 'new PDO(\"mysql:host=db;dbname=stonkspizza\", \"root\", \"root\");' 2>/dev/null; do
-        echo 'Waiting for database...';
-        sleep 2;
-      done &&
-      php artisan migrate --force &&
-      npm install &&
-      npm run build &&
-      apache2-foreground
-      "
 
   db:
     image: mysql:8
