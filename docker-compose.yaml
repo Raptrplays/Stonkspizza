@@ -19,7 +19,7 @@ services:
       done &&
       php artisan migrate --force &&
       npm install &&
-      npm run dev &&
+      npm run build &&
       apache2-foreground
       "
 
