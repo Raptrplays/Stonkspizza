@@ -11,15 +11,15 @@ services:
       - db
     command: >
       sh -c '
-      # Wait for DB
-      until php -r 'new PDO(\"mysql:host=db;dbname=stonkspizza\", \"root\", \"root\");' 2>/dev/null; do
-        echo 'Waiting for database...';
-        sleep 2;
-      done &&
-      php artisan migrate --force &&
-      npm install &&
-      npm run build &&
-      apache2-foreground
+        # Wait for DB
+        until php -r "new PDO(\"mysql:host=db;dbname=stonkspizza\",\"root\",\"root\");" 2>/dev/null; do
+          echo "Waiting for database...";
+          sleep 2;
+        done &&
+        php artisan migrate --force &&
+        npm install &&
+        npm run build &&
+        apache2-foreground
       '
 
   db:
@@ -29,4 +29,3 @@ services:
       MYSQL_DATABASE: stonkspizza
     ports:
       - "3306:3306"
-    command: --default-authentication-plugin=mysql_native_password
