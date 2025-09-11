@@ -14,12 +14,17 @@ services:
       - db
     command: >
       sh -c '
-        # Wait for DB
+        echo "Waiting for database...";
         until php -r "new PDO(\"mysql:host=db;dbname=stonkspizza\",\"root\",\"root\");" 2>/dev/null; do
-          echo "Waiting for database...";
           sleep 2;
-        done &&
-        php artisan migrate --force &&
+        done;
+        echo "Database ready!";
+        php artisan migrate --force;
+        echo "Installing Node dependencies...";
+        npm install;
+        echo "Building assets...";
+        npm run build;
+        echo "Starting Apache...";
         apache2-foreground
       '
 
