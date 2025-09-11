@@ -7,24 +7,18 @@ services:
       - "8000:80"
     volumes:
       - .:/var/www/html:cached
-      - public_build:/var/www/html/public/build
     env_file:
       - .env
     depends_on:
       - db
     command: >
       sh -c '
-        echo "Waiting for database...";
+        # Wait for database
         until php -r "new PDO(\"mysql:host=db;dbname=stonkspizza\",\"root\",\"root\");" 2>/dev/null; do
+          echo "Waiting for database...";
           sleep 2;
-        done;
-        echo "Database ready!";
-        php artisan migrate --force;
-        echo "Installing Node dependencies...";
-        npm install;
-        echo "Building assets...";
-        npm run build;
-        echo "Starting Apache...";
+        done &&
+        php artisan migrate --force &&
         apache2-foreground
       '
 
@@ -35,6 +29,3 @@ services:
       MYSQL_DATABASE: stonkspizza
     ports:
       - "3306:3306"
-
-volumes:
-  public_build:
