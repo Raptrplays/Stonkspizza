@@ -1,10 +1,13 @@
+version: "3.9"
+
 services:
   app:
     build: .
     ports:
       - "8000:80"
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html:cached
+      - public_build:/var/www/html/public/build
     env_file:
       - .env
     depends_on:
@@ -17,8 +20,6 @@ services:
           sleep 2;
         done &&
         php artisan migrate --force &&
-        npm install &&
-        npm run build &&
         apache2-foreground
       '
 
@@ -29,3 +30,6 @@ services:
       MYSQL_DATABASE: stonkspizza
     ports:
       - "3306:3306"
+
+volumes:
+  public_build:
