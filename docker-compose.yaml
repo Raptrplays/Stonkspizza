@@ -19,6 +19,8 @@ services:
           sleep 2;
         done &&
         php artisan migrate --force &&
+        npm install &&
+        npm run build &&
         apache2-foreground
       '
 
