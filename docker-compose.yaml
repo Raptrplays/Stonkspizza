@@ -13,7 +13,7 @@ services:
       - db
     command: >
       sh -c '
-        # Wait for database
+        # Wait for DB
         until php -r "new PDO(\"mysql:host=db;dbname=stonkspizza\",\"root\",\"root\");" 2>/dev/null; do
           echo "Waiting for database...";
           sleep 2;
