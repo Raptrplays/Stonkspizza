@@ -16,20 +16,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Build & push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:staging
-            ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:${{ github.sha }}
-
       - name: Setup .env.staging
         run: cp .env.staging.example .env
-
-      - name: Start Docker Compose (staging)
-        run: docker compose -f docker-compose.yaml -f docker-compose.override.staging.yaml up -d
 
       - name: Run migrations
         run: docker exec $(docker ps -qf "name=stonkspizza_app_1") php artisan migrate --force
