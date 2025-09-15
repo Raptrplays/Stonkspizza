@@ -47,9 +47,6 @@ jobs:
           SESSION_DRIVER=file
           EOF
 
-      - name: Start Docker Compose (staging)
-        run: docker compose -f docker-compose.yaml -f docker-compose.override.staging.yaml up -d
-
       - name: Run migrations
         run: docker exec $(docker ps -qf "name=stonkspizza_app_1") php artisan migrate --force
 
