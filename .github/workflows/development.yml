@@ -2,9 +2,7 @@ name: Development CI
 
 on:
   push:
-    branches: ["develop"]
-  pull_request:
-    branches: ["develop"]
+    branches: ["development"]
 
 jobs:
   laravel:
