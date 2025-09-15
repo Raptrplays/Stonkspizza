@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build & tag Docker image
+      - name: Build & push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -26,8 +26,26 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:staging
             ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:${{ github.sha }}
 
-      - name: Setup .env.staging
-        run: cp .env.staging.example .env
+      - name: Setup .env for staging
+        run: |
+          cat <<EOF > .env
+          APP_NAME=Stonkspizza
+          APP_ENV=staging
+          APP_KEY=${{ secrets.APP_KEY }}
+          APP_DEBUG=true
+          APP_URL=http://staging.example.com
+
+          DB_CONNECTION=mysql
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          DB_DATABASE=stonkspizza_staging
+          DB_USERNAME=${{ secrets.DB_USERNAME }}
+          DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+
+          CACHE_DRIVER=file
+          QUEUE_CONNECTION=sync
+          SESSION_DRIVER=file
+          EOF
 
       - name: Start Docker Compose (staging)
         run: docker compose -f docker-compose.yaml -f docker-compose.override.staging.yaml up -d
