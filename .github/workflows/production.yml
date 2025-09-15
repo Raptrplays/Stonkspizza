@@ -25,8 +25,5 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:${{ github.sha }}
 
-      - name: Deploy to local production
-        run: docker compose -f docker-compose.yaml -f docker-compose.override.production.yaml up -d
-
       - name: Show URL
         run: echo "Production running at http://localhost:8000"
