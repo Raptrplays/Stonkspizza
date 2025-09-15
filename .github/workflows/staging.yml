@@ -47,8 +47,11 @@ jobs:
           SESSION_DRIVER=file
           EOF
 
+      - name: Start Docker Compose (staging)
+        run: docker compose up -d
+
       - name: Run migrations
-        run: docker exec $(docker ps -qf "name=stonkspizza_app_1") php artisan migrate --force
+        run: docker compose exec -T app php artisan migrate --force
 
       - name: Check containers
         run: docker ps
