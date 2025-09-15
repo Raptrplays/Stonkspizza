@@ -48,7 +48,7 @@ jobs:
           EOF
 
       - name: Start Docker Compose (staging)
-        run: docker compose up -d
+        run: docker compose up -d --build
 
       - name: Run migrations
         run: docker compose exec -T app php artisan migrate --force
