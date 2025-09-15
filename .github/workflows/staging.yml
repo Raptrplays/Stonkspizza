@@ -10,9 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup .env.staging
-        run: cp .env.staging.example .env
-
       - name: Run migrations
         run: docker exec $(docker ps -qf "name=stonkspizza_app_1") php artisan migrate --force
 
