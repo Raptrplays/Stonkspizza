@@ -22,7 +22,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:production
             ${{ secrets.DOCKERHUB_USERNAME }}/stonkspizza:${{ github.sha }}
 
       - name: Show URL
